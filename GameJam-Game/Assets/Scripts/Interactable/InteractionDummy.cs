@@ -4,9 +4,20 @@ namespace Interactable
 {
     public class InteractionDummy : MonoBehaviour, IInteractable
     {
-        public void Interact(InteractingEntity interactingEntity)
+        public IInteractable Interact(InteractingEntity interactingEntity)
         {
             Debug.Log("Hello world!");
+            return null;
+        }
+
+        public IInteractable InteractUsingInteractable(InteractingEntity interactingEntity, IInteractable interactable)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool CanInteractUsingInteractable(IInteractable interactable)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

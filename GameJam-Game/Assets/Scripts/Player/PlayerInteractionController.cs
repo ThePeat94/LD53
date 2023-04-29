@@ -14,6 +14,8 @@ namespace Player
         private InteractingEntity m_interactingEntity;
         private InputProcessor m_inputProcessor;
 
+        private IInteractable m_currentInteractable;
+
         private void Awake()
         {
             this.m_inputProcessor = this.GetOrAddComponent<InputProcessor>();
@@ -40,8 +42,15 @@ namespace Player
             var foundInteractable = overlappedByCollider.FirstOrDefault(c => c.GetComponentInParent<IInteractable>() != null);
             if (foundInteractable != null)
             {
+                var interactableTarget = foundInteractable.GetComponentInParent<IInteractable>();
+                if (this.m_currentInteractable != null &&
+                    interactableTarget.CanInteractUsingInteractable(m_currentInteractable))
+                {
+                    this.m_currentInteractable = interactableTarget.InteractUsingInteractable(this.m_interactingEntity, this.m_currentInteractable);
+                    return;
+                }
                 Debug.Log($"Interacting with \"{foundInteractable.name}\"");
-                foundInteractable.GetComponentInParent<IInteractable>().Interact(this.m_interactingEntity);
+                this.m_currentInteractable = interactableTarget.Interact(this.m_interactingEntity);
             }
         }
     }

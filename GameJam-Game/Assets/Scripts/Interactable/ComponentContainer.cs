@@ -7,9 +7,19 @@ namespace Interactable
     {
         [SerializeField] private ComponentData m_containedComponent;
 
-        public void Interact(InteractingEntity interactingEntity)
+        public IInteractable Interact(InteractingEntity interactingEntity)
         {
-            Instantiate(this.m_containedComponent.Model, interactingEntity.ComponentParent);
+            return Instantiate(this.m_containedComponent.Model, interactingEntity.ComponentParent).GetComponent<IInteractable>();
+        }
+
+        public IInteractable InteractUsingInteractable(InteractingEntity interactingEntity, IInteractable interactable)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool CanInteractUsingInteractable(IInteractable interactable)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
