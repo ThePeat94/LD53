@@ -11,12 +11,15 @@ namespace Player
     {
         [SerializeField] private Collider m_interactionCollider;
 
+        private InteractingEntity m_interactingEntity;
         private InputProcessor m_inputProcessor;
 
         private void Awake()
         {
             this.m_inputProcessor = this.GetOrAddComponent<InputProcessor>();
             this.m_inputProcessor.InteractTriggered += this.OnInteractTriggered;
+
+            this.m_interactingEntity = this.GetComponent<InteractingEntity>();
         }
 
         private void OnDestroy()
@@ -38,7 +41,7 @@ namespace Player
             if (foundInteractable != null)
             {
                 Debug.Log($"Interacting with \"{foundInteractable.name}\"");
-                foundInteractable.GetComponentInParent<IInteractable>().Interact();
+                foundInteractable.GetComponentInParent<IInteractable>().Interact(this.m_interactingEntity);
             }
         }
     }
