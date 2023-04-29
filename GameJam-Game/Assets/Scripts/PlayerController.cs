@@ -7,6 +7,7 @@ using Input;
 using Scriptables;
 using Scriptables.Audio;
 using UI;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController), typeof(InputProcessor), typeof(Animator))]
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         
-        this.m_inputProcessor = this.GetComponent<InputProcessor>();
+        this.m_inputProcessor = this.GetOrAddComponent<InputProcessor>();
         this.m_characterController = this.GetComponent<CharacterController>();
         this.m_animator = this.GetComponent<Animator>();
     }
