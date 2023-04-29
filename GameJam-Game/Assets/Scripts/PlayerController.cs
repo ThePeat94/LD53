@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using Input;
+﻿using Input;
 using Scriptables;
-using Scriptables.Audio;
-using UI;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -58,8 +51,16 @@ public class PlayerController : MonoBehaviour
     
     protected void Move()
     {
+
+        var moveSpeed = this.m_moveDirection * this.m_playerData.MovementSpeed;
+
+        if (this.m_inputProcessor.IsBoosting)
+        {
+            moveSpeed *= this.m_playerData.RunSpeedScale;
+        }
+        
         this.m_moveDirection = new Vector3(this.m_inputProcessor.Movement.x, Physics.gravity.y, this.m_inputProcessor.Movement.y);
-        this.m_characterController.Move(this.m_moveDirection * Time.deltaTime * this.m_playerData.MovementSpeed);
+        this.m_characterController.Move(moveSpeed * Time.deltaTime);
     }
         
     private void Rotate()
