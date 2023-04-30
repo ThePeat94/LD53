@@ -17,9 +17,7 @@ namespace Interactable
 
         public IInteractable Interact(InteractingEntity interactingEntity)
         {
-            var x = Instantiate(this.m_containedComponent.Model, interactingEntity.ComponentHolder).GetComponent<IInteractable>();
-            Debug.Log(x);
-            return x;
+            return Instantiate(this.m_containedComponent.Model, interactingEntity.ComponentHolder).GetComponent<IInteractable>();
         }
 
         public IInteractable InteractUsingInteractable(InteractingEntity interactingEntity, IInteractable interactable)

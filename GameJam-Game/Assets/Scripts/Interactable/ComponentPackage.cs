@@ -13,7 +13,14 @@ namespace Interactable
 
         private List<ComponentData> m_componentDatas = new();
 
+        [SerializeField] private ComponentData initialData;
+
         public IReadOnlyList<ComponentData> ContainedComponents => this.m_componentDatas;
+
+        private void Start()
+        {
+            this.AddComponent(initialData);
+        }
 
         private void Awake()
         {

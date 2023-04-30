@@ -73,6 +73,10 @@ namespace DefaultNamespace.Order
                 index++;
                 var order = copiedOrderQueue.Dequeue();
                 var foundOrderContainingEachComponent = false;
+                if (order.OrderData.NeededComponents.Count != deliveredPackage.ContainedComponents.Count)
+                {
+                    continue;
+                }
                 foreach (var contained in deliveredPackage.ContainedComponents)
                 {
                     if (!order.OrderData.NeededComponents.Contains(contained))
@@ -94,14 +98,12 @@ namespace DefaultNamespace.Order
             {
                 Debug.Log("Order not fullfilled");
                 return;
-                
             }
 
             var listedOrders = this.m_currentOrders.ToList();
             listedOrders.RemoveAt(index);
             this.m_currentOrders = new Queue<PackageOrder>(listedOrders);
             this.m_ordersChanged?.Invoke(this, System.EventArgs.Empty);
-
         }
     }
 }
