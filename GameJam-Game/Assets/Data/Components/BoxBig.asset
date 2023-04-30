@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_componentName: XXL Box
   m_icon: {fileID: 0}
-  m_model: {fileID: 3813046021201976612, guid: 42a4c1dd692c6894f91db1b08d9578df, type: 3}
+  m_model: {fileID: 3813046021201976612, guid: 2a07ba968d6ec3c43ac64ebb1e3decab, type: 3}
