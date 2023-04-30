@@ -84,6 +84,4 @@ public class PlayerController : MonoBehaviour
     {
         this.m_animator.SetBool(s_isWalkingHash, this.m_moveDirection != Physics.gravity);
     }
-
-
 }

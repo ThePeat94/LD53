@@ -40,18 +40,19 @@ namespace Player
             var overlappedByCollider = Physics.OverlapBox(bounds.center, bounds.extents, this.m_interactionCollider.transform.rotation);
             
             var foundInteractable = overlappedByCollider.FirstOrDefault(c => c.GetComponentInParent<IInteractable>() != null);
-            if (foundInteractable != null)
+            if (foundInteractable is null)
+                return;
+            
+            var interactableTarget = foundInteractable.GetComponentInParent<IInteractable>();
+            if (this.m_currentInteractable is not null &&
+                interactableTarget.CanInteractUsingInteractable(this.m_currentInteractable))
             {
-                var interactableTarget = foundInteractable.GetComponentInParent<IInteractable>();
-                if (this.m_currentInteractable != null &&
-                    interactableTarget.CanInteractUsingInteractable(m_currentInteractable))
-                {
-                    this.m_currentInteractable = interactableTarget.InteractUsingInteractable(this.m_interactingEntity, this.m_currentInteractable);
-                    return;
-                }
-                Debug.Log($"Interacting with \"{foundInteractable.name}\"");
-                this.m_currentInteractable = interactableTarget.Interact(this.m_interactingEntity);
+                Debug.Log($"Interacting with \"{foundInteractable.name}\" using \"{this.m_currentInteractable}\"");
+                this.m_currentInteractable = interactableTarget.InteractUsingInteractable(this.m_interactingEntity, this.m_currentInteractable);
+                return;
             }
+            Debug.Log($"Interacting with \"{foundInteractable.name}\"");
+            this.m_currentInteractable = interactableTarget.Interact(this.m_interactingEntity);
         }
     }
 }

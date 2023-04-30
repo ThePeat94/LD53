@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_componentName: Book
   m_icon: {fileID: 0}
-  m_model: {fileID: 0}
+  m_model: {fileID: 7471508689020267509, guid: fb1af98ce1cae454c890ee08fba22fe5, type: 3}

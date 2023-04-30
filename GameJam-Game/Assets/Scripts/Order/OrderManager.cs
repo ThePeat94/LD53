@@ -50,7 +50,6 @@ namespace DefaultNamespace.Order
 
         private void PackageWasCompleted(ComponentPackage deliveredPackage)
         {
-
             var copiedOrderQueue = new Queue<PackageOrder>(this.m_currentOrders);
             var index = -1;
             PackageOrder orderWithAll = null; 

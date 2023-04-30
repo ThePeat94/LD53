@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_componentName: Box
   m_icon: {fileID: 0}
-  m_model: {fileID: 0}
+  m_model: {fileID: 2281165591959083194, guid: 8f5d79da0eb2c4f44b7f434b18dbecbe, type: 3}

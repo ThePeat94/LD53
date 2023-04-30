@@ -19,5 +19,13 @@ namespace Interactable
         {
             throw new System.NotImplementedException();
         }
+
+        public void Activate()
+        {
+        }
+
+        public void Deactivate()
+        {
+        }
     }
 }
