@@ -3,7 +3,7 @@ using Scriptables;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController), typeof(InputProcessor), typeof(Animator))]
+[RequireComponent(typeof(CharacterController), typeof(InputProcessor))]
 public class PlayerController : MonoBehaviour
 {
     private static PlayerController s_instance;
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         
         this.m_inputProcessor = this.GetOrAddComponent<InputProcessor>();
         this.m_characterController = this.GetComponent<CharacterController>();
-        this.m_animator = this.GetComponent<Animator>();
+        this.m_animator = this.GetComponentInChildren<Animator>();
     }
     
     // Update is called once per frame
