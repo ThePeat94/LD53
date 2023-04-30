@@ -55,6 +55,9 @@ namespace DefaultNamespace.Order
                 this.m_currentOrders.Enqueue(newPackageOrder);
                 this.m_ordersChanged?.Invoke(this, System.EventArgs.Empty);
             }
+            
+            
+            
         }
 
         private void OnPackageDelivered(object sender, System.EventArgs args)
@@ -104,6 +107,29 @@ namespace DefaultNamespace.Order
             listedOrders.RemoveAt(index);
             this.m_currentOrders = new Queue<PackageOrder>(listedOrders);
             this.m_ordersChanged?.Invoke(this, System.EventArgs.Empty);
+        }
+
+        public void ExpireOrders()
+        {
+
+            var copiedOrders = m_currentOrders.ToList();
+            var index = 0;
+            foreach (var order in this.m_currentOrders)
+            {
+                order.CurrentFrameCountdown--;
+                if (order.CurrentFrameCountdown <= 0)
+                {
+                    copiedOrders.RemoveAt(index);
+                }
+
+                index++;
+            }
+
+            if (copiedOrders.Count != m_currentOrders.Count)
+            {
+                this.m_currentOrders = new Queue<PackageOrder>(copiedOrders);
+                this.m_ordersChanged?.Invoke(this, System.EventArgs.Empty);
+            }
         }
     }
 }
