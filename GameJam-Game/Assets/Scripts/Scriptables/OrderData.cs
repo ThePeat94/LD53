@@ -13,7 +13,7 @@ namespace Scriptables
         [SerializeField] private int m_frameTime;
 
         public Sprite Icon => this.m_icon;
-        public List<ComponentData> NeededComponents => this.m_neededComponents;
+        public IReadOnlyList<ComponentData> NeededComponents => this.m_neededComponents;
         public int FrameTime => this.m_frameTime;
         public string Name => this.m_name;
     }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Interactable;
 using Scriptables;
 using UnityEngine;
 
@@ -11,10 +13,11 @@ namespace DefaultNamespace.Order
 
         [SerializeField] private List<OrderData> m_availableOrders;
 
-        private Queue<OrderData> m_currentOrders = new();
+        private Queue<PackageOrder> m_currentOrders = new();
 
         private int m_currentOrderSpawnFrameCountdown;
-        private readonly int m_orderSpawnFrameTime = 300;
+        private int m_maxOrders = 5;
+        private readonly int m_orderSpawnFrameTime = 30;
 
         public event EventHandler OrdersChanged
         {
@@ -22,7 +25,7 @@ namespace DefaultNamespace.Order
             remove => this.m_ordersChanged -= value;
         }
         
-        public List<OrderData> AvailableOrders => this.m_availableOrders;
+        public IReadOnlyCollection<PackageOrder> CurrentOrders => this.m_currentOrders;
 
         private void Awake()
         {
@@ -31,39 +34,56 @@ namespace DefaultNamespace.Order
 
         private void FixedUpdate()
         {
+            if(this.m_currentOrders.Count >= this.m_maxOrders) return;
+            
             this.m_currentOrderSpawnFrameCountdown--;
             if (this.m_currentOrderSpawnFrameCountdown <= 0)
             {
+                Debug.Log("Creating new Order");
                 this.m_currentOrderSpawnFrameCountdown = this.m_orderSpawnFrameTime;
-                this.m_currentOrders.Enqueue(this.m_availableOrders[UnityEngine.Random.Range(0, this.m_availableOrders.Count)]);
+                var rndOrderData = this.m_availableOrders[UnityEngine.Random.Range(0, this.m_availableOrders.Count)];
+                var newPackageOrder = new PackageOrder(rndOrderData);
+                this.m_currentOrders.Enqueue(newPackageOrder);
                 this.m_ordersChanged?.Invoke(this, System.EventArgs.Empty);
             }
         }
 
-        private void OrderWasCompleted(OrderData completedOrderData)
+        private void PackageWasCompleted(ComponentPackage deliveredPackage)
         {
-            this.DequeueFirstFoundOrder(completedOrderData);
-            this.m_ordersChanged?.Invoke(this, System.EventArgs.Empty);
-        }
 
-        private void DequeueFirstFoundOrder(OrderData completedOrderData)
-        {
-            var tmpQueue = new Queue<OrderData>();
-            var foundFirstOrder = false;
-            while (this.m_currentOrders.Count > 0)
+            var copiedOrderQueue = new Queue<PackageOrder>(this.m_currentOrders);
+            var index = -1;
+            PackageOrder orderWithAll = null; 
+            while (copiedOrderQueue.Count > 0)
             {
-                var order = this.m_currentOrders.Dequeue();
-                if (order != completedOrderData || foundFirstOrder)
+                index++;
+                var order = copiedOrderQueue.Dequeue();
+                var foundOrderContainingEachComponent = false;
+                foreach (var contained in deliveredPackage.ContainedComponents)
                 {
-                    tmpQueue.Enqueue(order);
+                    if (!order.OrderData.NeededComponents.Contains(contained))
+                    {
+                        break;
+                    }
+
+                    foundOrderContainingEachComponent = true;
                 }
-                else
+
+                if (foundOrderContainingEachComponent)
                 {
-                    foundFirstOrder = true;
+                    orderWithAll = order;
+                    break;
                 }
             }
 
-            this.m_currentOrders = tmpQueue;
+            if (orderWithAll is null)
+                return;
+            
+            var listedOrders = this.m_currentOrders.ToList();
+            listedOrders.RemoveAt(index);
+            this.m_currentOrders = new Queue<PackageOrder>(listedOrders);
+            this.m_ordersChanged?.Invoke(this, System.EventArgs.Empty);
+
         }
     }
 }

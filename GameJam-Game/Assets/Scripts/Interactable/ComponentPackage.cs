@@ -10,6 +10,8 @@ namespace Interactable
     {
         private List<ComponentData> m_componentDatas = new();
 
+        public IReadOnlyList<ComponentData> ContainedComponents => this.m_componentDatas;
+
         private void AddComponent(ComponentData data)
         {
             m_componentDatas.Add(data);
