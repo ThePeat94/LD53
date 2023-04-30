@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using EventArgs;
 using Interactable;
 using Scriptables;
 using UnityEngine;
@@ -19,6 +20,8 @@ namespace DefaultNamespace.Order
         private int m_maxOrders = 5;
         private readonly int m_orderSpawnFrameTime = 30;
 
+        private ComponentEndPoint m_endPoint;
+
         public event EventHandler OrdersChanged
         {
             add => this.m_ordersChanged += value;
@@ -30,6 +33,12 @@ namespace DefaultNamespace.Order
         private void Awake()
         {
             this.m_currentOrderSpawnFrameCountdown = this.m_orderSpawnFrameTime;
+                
+            if (this.m_endPoint is null)
+            {
+                this.m_endPoint = FindObjectOfType<ComponentEndPoint>();
+            }
+            this.m_endPoint.PackageDelivered += this.OnPackageDelivered;
         }
 
         private void FixedUpdate()
@@ -46,6 +55,12 @@ namespace DefaultNamespace.Order
                 this.m_currentOrders.Enqueue(newPackageOrder);
                 this.m_ordersChanged?.Invoke(this, System.EventArgs.Empty);
             }
+        }
+
+        private void OnPackageDelivered(object sender, System.EventArgs args)
+        {
+            PackageDeliveryEventArgs eventArgs = (PackageDeliveryEventArgs) args;
+            this.PackageWasCompleted(eventArgs.EventPackage);
         }
 
         private void PackageWasCompleted(ComponentPackage deliveredPackage)
@@ -76,8 +91,12 @@ namespace DefaultNamespace.Order
             }
 
             if (orderWithAll is null)
+            {
+                Debug.Log("Order not fullfilled");
                 return;
-            
+                
+            }
+
             var listedOrders = this.m_currentOrders.ToList();
             listedOrders.RemoveAt(index);
             this.m_currentOrders = new Queue<PackageOrder>(listedOrders);

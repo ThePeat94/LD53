@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_componentName: Dummy Component
   m_icon: {fileID: 0}
-  m_model: {fileID: 3813046021201976612, guid: 42a4c1dd692c6894f91db1b08d9578df, type: 3}
+  m_model: {fileID: 3752512902614488228, guid: d08773299f226c442aec1c656826bf5f, type: 3}

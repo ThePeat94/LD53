@@ -28,15 +28,16 @@ namespace Interactable
 
         public IInteractable Interact(InteractingEntity interactingEntity)
         {
-            this.transform.SetParent(interactingEntity.ComponentParent);
+            this.transform.SetParent(interactingEntity.ComponentHolder);
             this.transform.localPosition = Vector3.zero;
+            this.Deactivate();
             return this;
         }
         
         public IInteractable InteractUsingInteractable(InteractingEntity interactingEntity, IInteractable interactable)
         {
-            this.AddComponent(interactingEntity.ComponentParent.GetComponentInChildren<ComponentObject>().ComponentData);
-            Destroy(interactingEntity.ComponentParent.GetChild(0).gameObject);
+            this.AddComponent(interactingEntity.ComponentHolder.GetComponentInChildren<ComponentObject>().ComponentData);
+            Destroy(interactingEntity.ComponentHolder.GetChild(0).gameObject);
             return null;
         }
 

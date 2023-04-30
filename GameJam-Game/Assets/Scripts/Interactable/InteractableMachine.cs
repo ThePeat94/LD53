@@ -18,7 +18,7 @@ namespace Interactable
         {
             if (this.m_currentComponentPackage is not null && this.m_currentComponentData is null)
             {
-                this.m_currentComponentPackage.transform.SetParent(interactingEntity.ComponentParent);
+                this.m_currentComponentPackage.transform.SetParent(interactingEntity.ComponentHolder);
                 this.m_currentComponentPackage.transform.localPosition = Vector3.zero;
                 var toReturn = this.m_currentComponentPackage;
                 this.m_currentComponentPackage = null;
