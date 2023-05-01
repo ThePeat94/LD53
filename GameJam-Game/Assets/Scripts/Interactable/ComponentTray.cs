@@ -36,6 +36,14 @@ namespace Interactable
             if (this.m_currentDepositedObject == null)
                 return this.TryDepositInteractable(interactable);
 
+            switch (interactable)
+            {
+                case ComponentObject when this.m_currentDepositedObject is ComponentObject:
+                    return interactable;
+                case ComponentPackage when this.m_currentDepositedObject is ComponentPackage:
+                    return interactable;
+            }
+
             ComponentObject co = null;
             if (this.m_currentDepositedObject is ComponentObject dco)
                 co = dco;
