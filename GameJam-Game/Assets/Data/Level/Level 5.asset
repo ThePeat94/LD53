@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb41f3b225364249b65cb32c3babf662, type: 3}
+  m_Name: Level 5
+  m_EditorClassIdentifier: 
+  m_initialFrameTime: 6000
+  m_availableOrders:
+  - {fileID: 11400000, guid: 8c6d78f4957727c46acd4873229f6df0, type: 2}
+  - {fileID: 11400000, guid: b1529e902ad08254287340109f4aa50a, type: 2}
+  - {fileID: 11400000, guid: 32cca6b1000089b48bff0fe152ac023a, type: 2}
+  - {fileID: 11400000, guid: 7df97415365a5e74ea1f97fec453a9eb, type: 2}
+  m_neededOrdersToFulfill: 5
+  m_minFramesForOrderSpawn: 250
+  m_maxFramesForOrderSpawn: 750
+  m_firstOrderAfterFrames: 200
