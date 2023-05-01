@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Stamp
   m_EditorClassIdentifier: 
   m_componentName: NoName
-  m_icon: {fileID: 0}
+  m_icon: {fileID: 21300000, guid: 220b67190b4df954d81f4b8f7078de34, type: 3}
   m_model: {fileID: 7471508689020267509, guid: 1a4b2f07f08eb2741ae07166bb71406d, type: 3}
+  m_compatibleComponents: []

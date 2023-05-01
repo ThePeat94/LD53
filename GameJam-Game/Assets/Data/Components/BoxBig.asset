@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BoxBig
   m_EditorClassIdentifier: 
   m_componentName: XXL Box
-  m_icon: {fileID: 0}
+  m_icon: {fileID: 21300000, guid: a363ec53b962d6a45a28675c4b5588ed, type: 3}
   m_model: {fileID: 3813046021201976612, guid: 2a07ba968d6ec3c43ac64ebb1e3decab, type: 3}
   m_compatibleComponents:
   - {fileID: 11400000, guid: 0fadfe7fb63940242a6feb1987cd9aa8, type: 2}
