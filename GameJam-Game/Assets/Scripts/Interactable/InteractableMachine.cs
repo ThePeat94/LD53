@@ -1,4 +1,6 @@
-﻿using DefaultNamespace;
+﻿using System;
+using DefaultNamespace;
+using EventArgs;
 using Scriptables;
 using UnityEngine;
 
@@ -9,10 +11,25 @@ namespace Interactable
         [SerializeField] private ComponentData m_needsComponent;
         [SerializeField] private Transform m_componentPackagePlace;
 
+        private EventHandler<ComponentAddedEventArgs> m_componentAdded;
+        private EventHandler<ComponentAddedEventArgs> m_componentConsumed;
+        
         private Animator m_animator;
 
         private ComponentData m_currentComponentData;
         private ComponentPackage m_currentComponentPackage; 
+        
+        public event EventHandler<ComponentAddedEventArgs> ComponentAdded
+        {
+            add => this.m_componentAdded += value;
+            remove => this.m_componentAdded -= value;
+        } 
+
+        public event EventHandler<ComponentAddedEventArgs> ComponentConsumed
+        {
+            add => this.m_componentConsumed += value;
+            remove => this.m_componentConsumed -= value;
+        } 
 
         public IInteractable Interact(InteractingEntity interactingEntity)
         {
@@ -34,8 +51,10 @@ namespace Interactable
             
             Debug.Log("Applying component");
             this.m_currentComponentPackage.AddComponent(this.m_currentComponentData);
+            var consumed = this.m_currentComponentData;
             this.m_currentComponentData = null;
-            
+            this.m_componentConsumed?.Invoke(this, new(consumed));
+
             return null;
         }
 
@@ -52,6 +71,7 @@ namespace Interactable
                 Debug.Log("Inserting Component object");
                 this.m_currentComponentData = co.ComponentData;
                 Destroy(co.gameObject);
+                this.m_componentAdded?.Invoke(this, new(co.ComponentData));
                 return null;
             }
             
