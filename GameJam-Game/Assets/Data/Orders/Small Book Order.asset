@@ -18,5 +18,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0fadfe7fb63940242a6feb1987cd9aa8, type: 2}
   - {fileID: 11400000, guid: e43bb98462f26b34ebf827b5c34121fa, type: 2}
   - {fileID: 11400000, guid: c5fea7c981e244942b50bba3a5b68300, type: 2}
+  - {fileID: 11400000, guid: 10335a9c89e980645878bcacf054cb4a, type: 2}
   m_frameTime: 1800
   m_expiringTime: 60
