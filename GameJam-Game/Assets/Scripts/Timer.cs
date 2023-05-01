@@ -1,15 +1,14 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+using DefaultNamespace.Order;
+using EventArgs;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Timer : MonoBehaviour{
     
     [SerializeField] private int m_initalFrameTime;
     private EventHandler m_timeUp;
     private int m_remainingFrameTime;
+    private OrderManager m_orderManager;
 
     public event EventHandler TimeUp
     {
@@ -24,6 +23,29 @@ public class Timer : MonoBehaviour{
     private void Start()
     {
         this.m_remainingFrameTime = this.m_initalFrameTime;
+    }
+
+    private void Awake()
+    {
+        if (this.m_orderManager is null)
+        {
+            this.m_orderManager = FindObjectOfType<OrderManager>();
+        }
+
+        this.m_orderManager.OrderExpired += this.OnPackageOrderExpired;
+        this.m_orderManager.OrderDelivered += this.OnPackageOrderDelivered;
+    }
+
+    private void OnPackageOrderExpired(object sender, PackageOrderChangeEventArgs eventArgs)
+    {
+        Debug.Log("Package Expired");
+        this.m_remainingFrameTime -= eventArgs.PackageOrder.OrderData.PunishFrames;
+    }
+    
+    private void OnPackageOrderDelivered(object sender, PackageOrderChangeEventArgs eventArgs)
+    {
+        Debug.Log("Package Expired");
+        this.m_remainingFrameTime += eventArgs.PackageOrder.OrderData.RewardFrames;
     }
 
     private void FixedUpdate()

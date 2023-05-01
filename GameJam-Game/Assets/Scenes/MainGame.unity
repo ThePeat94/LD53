@@ -318,6 +318,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 183259220171217267, guid: 6eb05f0c68361ba45986eb6c45a0b421, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183259220171217267, guid: 6eb05f0c68361ba45986eb6c45a0b421, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889637826100458651, guid: 6eb05f0c68361ba45986eb6c45a0b421, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889637826100458651, guid: 6eb05f0c68361ba45986eb6c45a0b421, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889637826100458651, guid: 6eb05f0c68361ba45986eb6c45a0b421, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7357502524046540597, guid: 6eb05f0c68361ba45986eb6c45a0b421, type: 3}
       propertyPath: m_Name
       value: Main Game UI
@@ -407,7 +427,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6629967839760096384, guid: 6eb05f0c68361ba45986eb6c45a0b421, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eb05f0c68361ba45986eb6c45a0b421, type: 3}
