@@ -1,47 +1,77 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using DefaultNamespace;
+using DefaultNamespace.Order;
+using EventArgs;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class TimerCount : MonoBehaviour
+namespace UI
 {
+    public class RoundTimer : MonoBehaviour
+    {
 
-    private Timer m_timer;
+        private Timer m_timer;
     
 
-    private TextMeshProUGUI m_cock;
-    public Color32 normalFillColor;
-    public Color32 warningFillColor;
-    public float warningLimit = 20;
+        [SerializeField] private TextMeshProUGUI m_mainTextField;
+        [SerializeField] private TextMeshProUGUI changeVisualiseField;
+        [SerializeField] private int changeFrameCount = 60;
+        public Color32 normalFillColor;
+        public Color32 warningFillColor;
+        public float warningLimit = 20;
+        private OrderManager m_orderManager;
 
-    private void Start()
-    {
+        private int m_currentChangeDisplayFrame;
         
-        m_cock = GetComponent<TextMeshProUGUI>();
-        
-        m_cock.color = normalFillColor;
-    }
 
-    private void FixedUpdate()
-    {
-        m_cock.text = (m_timer.RemainingFrameTime*Time.fixedDeltaTime).ToString("N0");
-
-        if (m_timer.RemainingFrameTime < ((warningLimit / 100) * m_timer.InitialFrameTime))
+        private void Start()
         {
-            m_cock.color = warningFillColor;
-        }
-    }
-    private void Awake()
-    {
-        if (this.m_timer is null)
-        {
-            this.m_timer = FindObjectOfType<Timer>();
+            this.m_mainTextField.color = this.normalFillColor;
         }
 
+        private void FixedUpdate()
+        {
+            if (this.m_currentChangeDisplayFrame <= 0)
+            {
+                this.changeVisualiseField.text = "";
+            }
+            
+            this.m_mainTextField.text = (this.m_timer.RemainingFrameTime*Time.fixedDeltaTime).ToString("N0");
+
+            if (this.m_timer.RemainingFrameTime < ((this.warningLimit / 100) * this.m_timer.InitialFrameTime))
+            {
+                this.m_mainTextField.color = this.warningFillColor;
+            }
+            this.m_currentChangeDisplayFrame--;
+        }
+
+        private void OnOrderExpired(object sender, PackageOrderChangeEventArgs eventArgs)
+        {
+            this.m_currentChangeDisplayFrame = this.changeFrameCount;
+            this.changeVisualiseField.text = (-eventArgs.PackageOrder.OrderData.PunishFrames*Time.fixedDeltaTime).ToString("N0");
+            this.changeVisualiseField.color = this.warningFillColor;
+        }
         
+        private void OnOrderDelivered(object sender, PackageOrderChangeEventArgs eventArgs)
+        {
+            this.m_currentChangeDisplayFrame = this.changeFrameCount;
+            this.changeVisualiseField.text = (eventArgs.PackageOrder.OrderData.RewardFrames*Time.fixedDeltaTime).ToString("N0");
+            this.changeVisualiseField.color = this.normalFillColor;
+        }
+
+        private void Awake()
+        {
+            if (this.m_timer is null)
+            {
+                this.m_timer = FindObjectOfType<Timer>();
+            }
+            
+            if (this.m_orderManager is null)
+            {
+                this.m_orderManager = FindObjectOfType<OrderManager>();
+            }
+
+            this.m_orderManager.OrderExpired += this.OnOrderExpired;
+            
+            this.m_orderManager.OrderDelivered += this.OnOrderDelivered;
+        }
     }
 }

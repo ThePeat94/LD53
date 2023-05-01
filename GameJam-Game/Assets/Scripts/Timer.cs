@@ -53,7 +53,7 @@ public class Timer : MonoBehaviour{
     
     private void OnPackageOrderDelivered(object sender, PackageOrderChangeEventArgs eventArgs)
     {
-        Debug.Log("Package Expired");
+        Debug.Log("Package Deliverd");
         this.m_remainingFrameTime += eventArgs.PackageOrder.OrderData.RewardFrames;
     }
 
