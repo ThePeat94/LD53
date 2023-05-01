@@ -1,6 +1,7 @@
 ﻿using System;
 using DefaultNamespace.Order;
 using EventArgs;
+using Scriptables;
 using UI;
 using UnityEngine;
 
@@ -8,8 +9,9 @@ namespace DefaultNamespace
 {
     public class GameWinner : MonoBehaviour
     {
-        [SerializeField] private int m_amountOfOrdersToWin;
-        
+        [SerializeField] private LevelData m_levelData;
+
+        private int m_amountOfOrdersToWin;
         private EventHandler m_gameWon;
         private EventHandler m_succeededOrder;
         
@@ -33,6 +35,7 @@ namespace DefaultNamespace
 
         private void Awake()
         {
+            this.m_amountOfOrdersToWin = this.m_levelData.NeededOrdersToFulfill;
             this.m_orderManager = FindObjectOfType<OrderManager>();
             this.m_orderManager.OrderDelivered += this.OnOrderSuccess;
         }

@@ -1,11 +1,14 @@
 using System;
 using DefaultNamespace.Order;
 using EventArgs;
+using Scriptables;
 using UnityEngine;
 
 public class Timer : MonoBehaviour{
     
-    [SerializeField] private int m_initalFrameTime;
+    [SerializeField] private LevelData m_levelData;
+
+    private int m_initialFrameTime;
     private EventHandler m_timeUp;
     private int m_remainingFrameTime;
     private OrderManager m_orderManager;
@@ -16,17 +19,13 @@ public class Timer : MonoBehaviour{
         remove => this.m_timeUp -= value;
     }
 
-    public int InitalFrameTime => this.m_initalFrameTime;
+    public int InitialFrameTime => this.m_initialFrameTime;
 
     public int RemainingFrameTime => this.m_remainingFrameTime;
-
-    private void Start()
-    {
-        this.m_remainingFrameTime = this.m_initalFrameTime;
-    }
-
+    
     private void Awake()
     {
+        this.m_initialFrameTime = this.m_levelData.InitialFrameTime;
         if (this.m_orderManager is null)
         {
             this.m_orderManager = FindObjectOfType<OrderManager>();
@@ -34,6 +33,11 @@ public class Timer : MonoBehaviour{
 
         this.m_orderManager.OrderExpired += this.OnPackageOrderExpired;
         this.m_orderManager.OrderDelivered += this.OnPackageOrderDelivered;
+    }
+    
+    private void Start()
+    {
+        this.m_remainingFrameTime = this.m_initialFrameTime;
     }
 
     private void OnPackageOrderExpired(object sender, PackageOrderChangeEventArgs eventArgs)

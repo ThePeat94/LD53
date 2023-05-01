@@ -10,8 +10,7 @@ namespace DefaultNamespace
     public class GameStateManager : MonoBehaviour
     {
         [SerializeField] private bool m_hasNewInstructions = true;
-        
-        
+
         private State m_currentState;
         
         private InputProcessor m_inputProcessor;

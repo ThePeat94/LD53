@@ -44,9 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a284b300314fe38b700c178d01f8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_availableOrders:
-  - {fileID: 11400000, guid: 7df97415365a5e74ea1f97fec453a9eb, type: 2}
-  - {fileID: 11400000, guid: b1529e902ad08254287340109f4aa50a, type: 2}
-  - {fileID: 11400000, guid: 8c6d78f4957727c46acd4873229f6df0, type: 2}
-  - {fileID: 11400000, guid: e3479c0449edf0042ab3add291cff530, type: 2}
-  - {fileID: 11400000, guid: 32cca6b1000089b48bff0fe152ac023a, type: 2}
+  m_levelData: {fileID: 11400000, guid: 4da9a98c1ce2ffc4cb61c4cfcc19310f, type: 2}
+  m_gameStateManager: {fileID: 0}

@@ -6,6 +6,7 @@ using Interactable;
 using Scriptables;
 using Unity.XR.OpenVR;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace DefaultNamespace.Order
 {
@@ -17,14 +18,14 @@ namespace DefaultNamespace.Order
         // TODO: Subscribe in time manager to this event and add time
         private EventHandler<PackageOrderChangeEventArgs> m_orderDelivered;
 
-        [SerializeField] private List<OrderData> m_availableOrders;
+        [SerializeField] private LevelData m_levelData;
         [SerializeField] private GameStateManager m_gameStateManager;
         
         private Queue<PackageOrder> m_currentOrders = new();
 
+        private List<OrderData> m_availableOrders;
         private int m_currentOrderSpawnFrameCountdown;
         private int m_maxOrders = 5;
-        private readonly int m_orderSpawnFrameTime = 30;
         
         private ComponentEndPoint m_endPoint;
 
@@ -50,7 +51,8 @@ namespace DefaultNamespace.Order
 
         private void Awake()
         {
-            this.m_currentOrderSpawnFrameCountdown = this.m_orderSpawnFrameTime;
+            this.m_availableOrders = this.m_levelData.AvailableOrders.ToList();
+            this.m_currentOrderSpawnFrameCountdown = Random.Range(this.m_levelData.MinFramesForOrderSpawn, this.m_levelData.MaxFramesForOrderSpawn + 1);
                 
             if (this.m_endPoint is null)
             {
@@ -83,7 +85,7 @@ namespace DefaultNamespace.Order
             if (this.m_currentOrderSpawnFrameCountdown <= 0)
             {
                 Debug.Log("Creating new Order");
-                this.m_currentOrderSpawnFrameCountdown = this.m_orderSpawnFrameTime;
+                this.m_currentOrderSpawnFrameCountdown = Random.Range(this.m_levelData.MinFramesForOrderSpawn, this.m_levelData.MaxFramesForOrderSpawn + 1);
                 var rndOrderData = this.m_availableOrders[UnityEngine.Random.Range(0, this.m_availableOrders.Count)];
                 var newPackageOrder = new PackageOrder(rndOrderData);
                 this.m_currentOrders.Enqueue(newPackageOrder);
