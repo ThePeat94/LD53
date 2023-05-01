@@ -35,6 +35,8 @@ namespace DefaultNamespace.Order
 
         private ComponentEndPoint m_endPoint;
 
+        private bool m_spawnedSafeOrder;
+
         public event EventHandler<PackageOrderChangeEventArgs> OrdersSpawned
         {
             add => this.m_orderSpawned += value;
@@ -101,6 +103,13 @@ namespace DefaultNamespace.Order
             Debug.Log("Creating new Order");
             this.m_currentOrderSpawnFrameCountdown = Random.Range(this.m_levelData.MinFramesForOrderSpawn, this.m_levelData.MaxFramesForOrderSpawn + 1);
             var rndOrderData = this.m_availableOrders[UnityEngine.Random.Range(0, this.m_availableOrders.Count)];
+
+            if (!this.m_spawnedSafeOrder && this.m_levelData.SafeOrderData != null)
+            {
+                rndOrderData = this.m_levelData.SafeOrderData;
+                this.m_spawnedSafeOrder = true;
+            }
+            
             var newPackageOrder = new PackageOrder(rndOrderData);
             this.m_currentOrders.Enqueue(newPackageOrder);
             this.m_orderSpawned?.Invoke(this, new PackageOrderChangeEventArgs(newPackageOrder));

@@ -20,3 +20,4 @@ MonoBehaviour:
   m_minFramesForOrderSpawn: 250
   m_maxFramesForOrderSpawn: 750
   m_firstOrderAfterFrames: 200
+  m_safeOrderData: {fileID: 11400000, guid: 7df97415365a5e74ea1f97fec453a9eb, type: 2}

@@ -12,6 +12,7 @@ namespace Scriptables
         [SerializeField] private int m_minFramesForOrderSpawn;
         [SerializeField] private int m_maxFramesForOrderSpawn;
         [SerializeField] private int m_firstOrderAfterFrames;
+        [SerializeField] private OrderData m_safeOrderData;
 
 
         public int InitialFrameTime => this.m_initialFrameTime;
@@ -20,5 +21,6 @@ namespace Scriptables
         public int MinFramesForOrderSpawn => this.m_minFramesForOrderSpawn;
         public int MaxFramesForOrderSpawn => this.m_maxFramesForOrderSpawn;
         public int FirstOrderAfterFrames => this.m_firstOrderAfterFrames;
+        public OrderData SafeOrderData => this.m_safeOrderData;
     }
 }

@@ -289,6 +289,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_collider: {fileID: 0}
   initialData: {fileID: 11400000, guid: 9f17234fcc99dac4ab81488b92a1dfcb, type: 2}
+  m_combineSfxData: {fileID: 11400000, guid: 9679a20807c664b4ab716116efe74b33, type: 2}
+  m_sfxPlayer: {fileID: 0}
 --- !u!1001 &2256923105439461111
 PrefabInstance:
   m_ObjectHideFlags: 0

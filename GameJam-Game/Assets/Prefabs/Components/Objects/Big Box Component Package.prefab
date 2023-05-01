@@ -353,6 +353,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_collider: {fileID: 0}
   initialData: {fileID: 11400000, guid: e43bb98462f26b34ebf827b5c34121fa, type: 2}
+  m_combineSfxData: {fileID: 11400000, guid: 9679a20807c664b4ab716116efe74b33, type: 2}
+  m_sfxPlayer: {fileID: 0}
 --- !u!65 &3402093501433450764
 BoxCollider:
   m_ObjectHideFlags: 0

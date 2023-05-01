@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DefaultNamespace;
 using EventArgs;
 using Scriptables;
 using UnityEngine;
@@ -26,6 +27,12 @@ namespace Interactable
 
         public IInteractable InteractUsingInteractable(InteractingEntity interactingEntity, IInteractable interactable)
         {
+            if (interactable is ComponentObject co)
+            {
+                Destroy(co.gameObject);
+                return null;
+            }
+            
             if (interactable is not ComponentPackage componentPackage)
                 return interactable;
             
@@ -37,7 +44,7 @@ namespace Interactable
 
         public bool CanInteractUsingInteractable(IInteractable interactable)
         {
-            return interactable is ComponentPackage;
+            return interactable is ComponentPackage || interactable is ComponentObject;
         }
 
         public void Activate() { }

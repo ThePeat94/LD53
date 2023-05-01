@@ -1,4 +1,8 @@
-﻿using DefaultNamespace;
+﻿using System;
+using Audio;
+using DefaultNamespace;
+using Scriptables.Audio;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Interactable
@@ -6,8 +10,15 @@ namespace Interactable
     public class ComponentTray : MonoBehaviour, IInteractable
     {
         [SerializeField] private Transform m_componentHolderParent;
+        [SerializeField] private SfxData m_combineSfxData;
+        [SerializeField] private SfxPlayer m_sfxPlayer;
         
         private IInteractable m_currentDepositedObject;
+
+        private void Awake()
+        {
+            this.m_sfxPlayer = this.GetOrAddComponent<SfxPlayer>();
+        }
 
         public IInteractable Interact(InteractingEntity interactingEntity)
         {
@@ -101,6 +112,7 @@ namespace Interactable
         {
             cp.AddComponent(co.ComponentData);
             Destroy(co.gameObject);
+            this.m_sfxPlayer.PlayOneShot(this.m_combineSfxData);
 
             if (this.m_currentDepositedObject is not ComponentPackage)
             {

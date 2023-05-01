@@ -207,6 +207,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_componentHolderParent: {fileID: 584019579088115215}
+  m_combineSfxData: {fileID: 11400000, guid: 9679a20807c664b4ab716116efe74b33, type: 2}
+  m_sfxPlayer: {fileID: 0}
 --- !u!4 &7875393564614748549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 86bd264c2dbfa3841b37f5c034d13541, type: 3}

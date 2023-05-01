@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Audio;
 using DefaultNamespace;
 using EventArgs;
 using JetBrains.Annotations;
 using Scriptables;
+using Scriptables.Audio;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Interactable
@@ -26,16 +29,17 @@ namespace Interactable
 
         public IReadOnlyList<ComponentData> ContainedComponents => this.m_componentDatas;
         public ComponentData ComponentData => this.initialData;
-        
-        private void Start()
-        {
-            this.AddComponent(this.initialData);
-        }
+
 
         private void Awake()
         {
             if (this.m_collider == null)
                 this.m_collider = this.GetComponentInChildren<Collider>();
+        }
+
+        private void Start()
+        {
+            this.AddComponent(this.initialData);
         }
 
         public void AddComponent(ComponentData data)

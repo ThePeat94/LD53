@@ -28,7 +28,7 @@ namespace DefaultNamespace
         private Timer m_timer;
 
         public State CurrentState => this.m_currentState;
-
+        
         private void Awake()
         {
             this.m_inputProcessor = this.GetOrAddComponent<InputProcessor>();
@@ -83,13 +83,16 @@ namespace DefaultNamespace
                 return;
             }
 
-            if (this.m_inputProcessor.RetryTriggered)
+            if (this.m_currentState == State.Lost)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene()
-                    .buildIndex);
-                return;
+                if (this.m_inputProcessor.RetryTriggered)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene()
+                        .buildIndex);
+                    return;
+                }    
             }
-
+            
             if (this.m_inputProcessor.BackToMainTriggered)
             {
                 SceneManager.LoadScene(0);
@@ -104,6 +107,8 @@ namespace DefaultNamespace
                     this.m_mainGameUI.HideInstructionsPanel();
                     if (this.m_instructionsSfx != null)
                         this.m_sfxPlayer.MuteAll();
+
+                    return;
                 }
             }
 
@@ -120,6 +125,7 @@ namespace DefaultNamespace
                     }
 
                     SceneManager.LoadScene(nextSceneIndex);
+                    return;
                 }
             }
         }
