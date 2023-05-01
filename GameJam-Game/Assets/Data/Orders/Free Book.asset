@@ -17,5 +17,5 @@ MonoBehaviour:
   m_neededComponents:
   - {fileID: 11400000, guid: 0fadfe7fb63940242a6feb1987cd9aa8, type: 2}
   - {fileID: 11400000, guid: e43bb98462f26b34ebf827b5c34121fa, type: 2}
-  m_frameTime: 1800
-  m_expiringTime: 60
+  m_frameTime: 3000
+  m_punishFrames: 200

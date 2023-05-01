@@ -4,6 +4,7 @@ using System.Linq;
 using EventArgs;
 using Interactable;
 using Scriptables;
+using Unity.XR.OpenVR;
 using UnityEngine;
 
 namespace DefaultNamespace.Order
@@ -17,7 +18,8 @@ namespace DefaultNamespace.Order
         private EventHandler<PackageOrderChangeEventArgs> m_orderDelivered;
 
         [SerializeField] private List<OrderData> m_availableOrders;
-
+        [SerializeField] private GameStateManager m_gameStateManager;
+        
         private Queue<PackageOrder> m_currentOrders = new();
 
         private int m_currentOrderSpawnFrameCountdown;
@@ -55,10 +57,19 @@ namespace DefaultNamespace.Order
                 this.m_endPoint = FindObjectOfType<ComponentEndPoint>();
             }
             this.m_endPoint.PackageDelivered += this.OnPackageDelivered;
+
+            if (this.m_gameStateManager == null)
+            {
+                this.m_gameStateManager = FindObjectOfType<GameStateManager>();
+            }
+            
         }
 
         private void FixedUpdate()
         {
+            if (this.m_gameStateManager.CurrentState != GameStateManager.State.Playing)
+                return;
+            
             this.ExpireOrders();
             this.SpawnNewOrders();
         }

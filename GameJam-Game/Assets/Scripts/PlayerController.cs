@@ -1,4 +1,5 @@
-﻿using Input;
+﻿using DefaultNamespace;
+using Input;
 using Scriptables;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private static readonly int s_isWalkingHash = Animator.StringToHash("IsWalking");
 
     [SerializeField] private PlayerData m_playerData;
+    [SerializeField] private GameStateManager m_gameStateManager;
 
     private Vector3 m_moveDirection;
     private CharacterController m_characterController;
@@ -35,11 +37,18 @@ public class PlayerController : MonoBehaviour
         this.m_inputProcessor = this.GetOrAddComponent<InputProcessor>();
         this.m_characterController = this.GetComponent<CharacterController>();
         this.m_animator = this.GetComponentInChildren<Animator>();
+        if (this.m_gameStateManager == null)
+        {
+            this.m_gameStateManager = FindObjectOfType<GameStateManager>();
+        }
     }
     
     // Update is called once per frame
     void Update()
     {
+        if (this.m_gameStateManager.CurrentState != GameStateManager.State.Playing)
+            return;
+        
         this.Move();
         this.Rotate();
     }

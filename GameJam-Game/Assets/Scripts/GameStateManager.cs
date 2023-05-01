@@ -9,6 +9,9 @@ namespace DefaultNamespace
 {
     public class GameStateManager : MonoBehaviour
     {
+        [SerializeField] private bool m_hasNewInstructions = true;
+        
+        
         private State m_currentState;
         
         private InputProcessor m_inputProcessor;
@@ -30,7 +33,11 @@ namespace DefaultNamespace
 
         private void Start()
         {
-            this.m_currentState = State.Playing;
+            this.m_currentState = this.m_hasNewInstructions ? State.ShowInstructions : State.Playing;
+            if (this.m_hasNewInstructions)
+            {
+                this.m_mainGameUI.ShowInstructionsPanel();
+            }
         }
 
         private void OnTimeUp(object sender, System.EventArgs e)
@@ -47,6 +54,17 @@ namespace DefaultNamespace
 
         private void Update()
         {
+            if (this.m_inputProcessor.QuitTriggered)
+            {
+                if (Application.platform == RuntimePlatform.WebGLPlayer)
+                {
+                    SceneManager.LoadScene(0);
+                    return; 
+                }
+                Application.Quit();
+                return;
+            }
+            
             if (this.m_inputProcessor.RetryTriggered)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -58,10 +76,20 @@ namespace DefaultNamespace
                 SceneManager.LoadScene(0);
                 return;
             }
+
+            if (this.m_currentState == State.ShowInstructions)
+            {
+                if (this.m_inputProcessor.ConfirmInstructionsTriggered)
+                {
+                    this.m_currentState = State.Playing;
+                    this.m_mainGameUI.HideInstructionsPanel();
+                }
+            }
         }
 
         public enum State
         {
+            ShowInstructions,
             Playing,
             Won,
             Lost

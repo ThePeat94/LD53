@@ -24,15 +24,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Shoot",
-                    "type": "Button",
-                    "id": "4cf00ba9-aa8c-4d9a-921f-a6447e16c09c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Quit",
                     "type": "Button",
                     "id": "22250974-600e-4736-9ad1-517f6777cfd5",
@@ -63,6 +54,15 @@
                     "name": "Retry",
                     "type": "Button",
                     "id": "d84a67c0-8077-4379-97d2-e57a0d85d6d0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ConfirmInstructions",
+                    "type": "Button",
+                    "id": "b78e1380-5901-44ee-b031-abc4586d86f8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -204,39 +204,6 @@
                 },
                 {
                     "name": "",
-                    "id": "f6217aba-f078-46d6-b907-8e01dbe7aebb",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "af72309e-9f1c-436a-b2f2-7965d611fe22",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "babdaa5d-8ac7-4db2-8dfd-cc18c9080a6a",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "cf8489ae-2e5d-473f-8bf6-7fb079afa6d9",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -320,6 +287,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Retry",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a6c53903-3979-4251-8965-6b6e23474835",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ConfirmInstructions",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "271b50f1-0cbe-4d11-a73c-a492a9cc9782",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ConfirmInstructions",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

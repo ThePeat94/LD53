@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using DefaultNamespace;
 using Input;
 using Interactable;
 using Unity.VisualScripting;
@@ -10,6 +11,8 @@ namespace Player
     public class PlayerInteractionController : MonoBehaviour
     {
         [SerializeField] private Collider m_interactionCollider;
+        [SerializeField] private GameStateManager m_gameStateManager;
+        
 
         private InteractingEntity m_interactingEntity;
         private InputProcessor m_inputProcessor;
@@ -23,10 +26,17 @@ namespace Player
             this.m_inputProcessor.InteractTriggered += this.OnInteractTriggered;
 
             this.m_interactingEntity = this.GetComponent<InteractingEntity>();
+            if (this.m_gameStateManager == null)
+            {
+                this.m_gameStateManager = FindObjectOfType<GameStateManager>();
+            }
         }
 
         private void FixedUpdate()
         {
+            if (this.m_gameStateManager.CurrentState != GameStateManager.State.Playing)
+                return;
+            
             var foundOverlapped = this.FindOverlappedObjectsByInteractionCollider();
             var foundInteractable = foundOverlapped.FirstOrDefault(c => c.GetComponentInParent<Highlighter>() != null);
             var previous = this.m_currentInteractableHighlight;

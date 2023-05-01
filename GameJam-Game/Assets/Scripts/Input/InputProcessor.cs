@@ -13,10 +13,10 @@ namespace Input
 
         public Vector2 Movement { get; private set; }
 
-        public bool ShootTriggered => this.m_playerInput.Actions.Shoot.triggered;
         public bool QuitTriggered => this.m_playerInput.Actions.Quit.triggered;
         public bool BackToMainTriggered => this.m_playerInput.Actions.BackToMenu.triggered;
         public bool RetryTriggered => this.m_playerInput.Actions.Retry.triggered;
+        public bool ConfirmInstructionsTriggered => this.m_playerInput.Actions.ConfirmInstructions.triggered;
 
         public bool IsBoosting { get; private set; }
 

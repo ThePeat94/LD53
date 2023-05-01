@@ -46,15 +46,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Shoot"",
-                    ""type"": ""Button"",
-                    ""id"": ""4cf00ba9-aa8c-4d9a-921f-a6447e16c09c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Quit"",
                     ""type"": ""Button"",
                     ""id"": ""22250974-600e-4736-9ad1-517f6777cfd5"",
@@ -85,6 +76,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""Retry"",
                     ""type"": ""Button"",
                     ""id"": ""d84a67c0-8077-4379-97d2-e57a0d85d6d0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ConfirmInstructions"",
+                    ""type"": ""Button"",
+                    ""id"": ""b78e1380-5901-44ee-b031-abc4586d86f8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -226,39 +226,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f6217aba-f078-46d6-b907-8e01dbe7aebb"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""af72309e-9f1c-436a-b2f2-7965d611fe22"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""babdaa5d-8ac7-4db2-8dfd-cc18c9080a6a"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""cf8489ae-2e5d-473f-8bf6-7fb079afa6d9"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
@@ -344,6 +311,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Retry"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6c53903-3979-4251-8965-6b6e23474835"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ConfirmInstructions"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""271b50f1-0cbe-4d11-a73c-a492a9cc9782"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ConfirmInstructions"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -354,11 +343,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Actions = asset.FindActionMap("Actions", throwIfNotFound: true);
         m_Actions_Move = m_Actions.FindAction("Move", throwIfNotFound: true);
         m_Actions_Interact = m_Actions.FindAction("Interact", throwIfNotFound: true);
-        m_Actions_Shoot = m_Actions.FindAction("Shoot", throwIfNotFound: true);
         m_Actions_Quit = m_Actions.FindAction("Quit", throwIfNotFound: true);
         m_Actions_BackToMenu = m_Actions.FindAction("BackToMenu", throwIfNotFound: true);
         m_Actions_Boost = m_Actions.FindAction("Boost", throwIfNotFound: true);
         m_Actions_Retry = m_Actions.FindAction("Retry", throwIfNotFound: true);
+        m_Actions_ConfirmInstructions = m_Actions.FindAction("ConfirmInstructions", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -422,22 +411,22 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IActionsActions> m_ActionsActionsCallbackInterfaces = new List<IActionsActions>();
     private readonly InputAction m_Actions_Move;
     private readonly InputAction m_Actions_Interact;
-    private readonly InputAction m_Actions_Shoot;
     private readonly InputAction m_Actions_Quit;
     private readonly InputAction m_Actions_BackToMenu;
     private readonly InputAction m_Actions_Boost;
     private readonly InputAction m_Actions_Retry;
+    private readonly InputAction m_Actions_ConfirmInstructions;
     public struct ActionsActions
     {
         private @PlayerInput m_Wrapper;
         public ActionsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Actions_Move;
         public InputAction @Interact => m_Wrapper.m_Actions_Interact;
-        public InputAction @Shoot => m_Wrapper.m_Actions_Shoot;
         public InputAction @Quit => m_Wrapper.m_Actions_Quit;
         public InputAction @BackToMenu => m_Wrapper.m_Actions_BackToMenu;
         public InputAction @Boost => m_Wrapper.m_Actions_Boost;
         public InputAction @Retry => m_Wrapper.m_Actions_Retry;
+        public InputAction @ConfirmInstructions => m_Wrapper.m_Actions_ConfirmInstructions;
         public InputActionMap Get() { return m_Wrapper.m_Actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -453,9 +442,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
-            @Shoot.started += instance.OnShoot;
-            @Shoot.performed += instance.OnShoot;
-            @Shoot.canceled += instance.OnShoot;
             @Quit.started += instance.OnQuit;
             @Quit.performed += instance.OnQuit;
             @Quit.canceled += instance.OnQuit;
@@ -468,6 +454,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Retry.started += instance.OnRetry;
             @Retry.performed += instance.OnRetry;
             @Retry.canceled += instance.OnRetry;
+            @ConfirmInstructions.started += instance.OnConfirmInstructions;
+            @ConfirmInstructions.performed += instance.OnConfirmInstructions;
+            @ConfirmInstructions.canceled += instance.OnConfirmInstructions;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
@@ -478,9 +467,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
-            @Shoot.started -= instance.OnShoot;
-            @Shoot.performed -= instance.OnShoot;
-            @Shoot.canceled -= instance.OnShoot;
             @Quit.started -= instance.OnQuit;
             @Quit.performed -= instance.OnQuit;
             @Quit.canceled -= instance.OnQuit;
@@ -493,6 +479,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Retry.started -= instance.OnRetry;
             @Retry.performed -= instance.OnRetry;
             @Retry.canceled -= instance.OnRetry;
+            @ConfirmInstructions.started -= instance.OnConfirmInstructions;
+            @ConfirmInstructions.performed -= instance.OnConfirmInstructions;
+            @ConfirmInstructions.canceled -= instance.OnConfirmInstructions;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -514,10 +503,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnShoot(InputAction.CallbackContext context);
         void OnQuit(InputAction.CallbackContext context);
         void OnBackToMenu(InputAction.CallbackContext context);
         void OnBoost(InputAction.CallbackContext context);
         void OnRetry(InputAction.CallbackContext context);
+        void OnConfirmInstructions(InputAction.CallbackContext context);
     }
 }
