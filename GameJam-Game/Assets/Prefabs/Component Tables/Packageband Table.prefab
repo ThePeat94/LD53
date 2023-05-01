@@ -2450,7 +2450,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 20c423f9e85bfeb49b72968a4c66fcdf, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5cbbf5d5c96953b43b4c0d6b475e549d, type: 2}
+      objectReference: {fileID: 2100000, guid: b95bb7fc980e0d34f9cae5f8e1950520, type: 2}
     - target: {fileID: 919132149155446097, guid: 20c423f9e85bfeb49b72968a4c66fcdf, type: 3}
       propertyPath: m_Name
       value: Container Stamps
