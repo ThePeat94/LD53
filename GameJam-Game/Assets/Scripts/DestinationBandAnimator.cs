@@ -6,11 +6,10 @@ namespace DefaultNamespace
 {
     public class DestinationBandAnimator : MonoBehaviour
     {
-        [SerializeField] private Material m_bandMaterial;
-
         private void Start()
         {
-            this.m_bandMaterial.DOOffset(new Vector2(5, 0), 1f).SetLoops(-1).SetEase(Ease.Linear);
+            var material = this.GetComponent<MeshRenderer>().material;
+            material.DOOffset(new Vector2(-1f, 0), 1f).SetLoops(-1).SetEase(Ease.Linear);
         }
     }
 }

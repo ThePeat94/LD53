@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Book
   m_EditorClassIdentifier: 
   m_componentName: Book
-  m_icon: {fileID: 0}
+  m_icon: {fileID: 21300000, guid: 2b32494b58388104aad23056e1a504ce, type: 3}
   m_model: {fileID: 7471508689020267509, guid: fb1af98ce1cae454c890ee08fba22fe5, type: 3}
+  m_compatibleComponents: []

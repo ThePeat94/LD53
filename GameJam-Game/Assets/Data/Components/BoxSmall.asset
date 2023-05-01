@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: BoxSmall
   m_EditorClassIdentifier: 
   m_componentName: Box
-  m_icon: {fileID: 0}
+  m_icon: {fileID: 21300000, guid: a363ec53b962d6a45a28675c4b5588ed, type: 3}
   m_model: {fileID: 2281165591959083194, guid: 8f5d79da0eb2c4f44b7f434b18dbecbe, type: 3}
+  m_compatibleComponents:
+  - {fileID: 11400000, guid: 0fadfe7fb63940242a6feb1987cd9aa8, type: 2}

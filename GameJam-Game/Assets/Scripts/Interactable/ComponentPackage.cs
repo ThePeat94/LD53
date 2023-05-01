@@ -10,13 +10,14 @@ namespace Interactable
     public class ComponentPackage: MonoBehaviour, IInteractable
     {
         [SerializeField] private Collider m_collider;
+        [SerializeField] private ComponentData initialData;
 
         private List<ComponentData> m_componentDatas = new();
 
-        [SerializeField] private ComponentData initialData;
 
         public IReadOnlyList<ComponentData> ContainedComponents => this.m_componentDatas;
-
+        public ComponentData ComponentData => this.initialData;
+        
         private void Start()
         {
             this.AddComponent(initialData);
