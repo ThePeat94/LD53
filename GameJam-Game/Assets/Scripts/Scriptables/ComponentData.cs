@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Scriptables
@@ -9,9 +10,16 @@ namespace Scriptables
         [SerializeField] private string m_componentName = "NoName";
         [SerializeField] private Sprite m_icon;
         [SerializeField] private GameObject m_model;
+        [SerializeField] private List<ComponentData> m_compatibleComponents;
+        
 
         public string ComponentName => this.m_componentName;
         public Sprite Icon => this.m_icon;
         public GameObject Model => this.m_model;
+
+        public bool IsCompatibleWith(ComponentData componentData)
+        {
+            return this.m_compatibleComponents.Contains(componentData);
+        }
     }
 }

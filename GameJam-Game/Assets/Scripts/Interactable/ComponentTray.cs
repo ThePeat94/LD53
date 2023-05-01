@@ -48,11 +48,13 @@ namespace Interactable
             else if (interactable is ComponentPackage icp)
                 cp = icp;
 
-            if (cp is not null && co is not null)
-            {
-                this.AddComponentToComponentPackage(cp, co);
-            }
-
+            if (cp is null || co is null)
+                return null;
+            
+            if (!cp.ComponentData.IsCompatibleWith(co.ComponentData))
+                return interactable;
+            
+            this.AddComponentToComponentPackage(cp, co);
             return null;
         }
 

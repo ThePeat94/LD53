@@ -247,6 +247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4379146239949277856}
   - component: {fileID: 6791197779978333643}
+  - component: {fileID: 5655275401297146466}
   m_Layer: 0
   m_Name: Win Condition UI
   m_TagString: Untagged
@@ -322,3 +323,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5655275401297146466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7821173087874194595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc3fb0f5bd1c4c739fddb7cb3ef91070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ordersNeededText: {fileID: 7055545635755792198}
