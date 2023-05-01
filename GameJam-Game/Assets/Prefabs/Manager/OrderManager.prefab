@@ -49,4 +49,5 @@ MonoBehaviour:
   m_orderDeliveredSfxData: {fileID: 11400000, guid: 3c41be3636ae24041aeeff2db0f16668, type: 2}
   m_orderExpiredSfxData: {fileID: 11400000, guid: 41e28b6188f309b40bf99e76730051d1, type: 2}
   m_notFittingOrderSfxData: {fileID: 11400000, guid: dda0c1f6d2fb36f49b8c576c3565d348, type: 2}
+  m_orderNotificationSfxData: {fileID: 11400000, guid: c178cd60bf4d5c741bcad5b0b4000104, type: 2}
   m_sfxPlayer: {fileID: 0}

@@ -24,6 +24,7 @@ namespace DefaultNamespace.Order
         [SerializeField] private SfxData m_orderDeliveredSfxData;
         [SerializeField] private SfxData m_orderExpiredSfxData;
         [SerializeField] private SfxData m_notFittingOrderSfxData;
+        [SerializeField] private SfxData m_orderNotificationSfxData;
         [SerializeField] private SfxPlayer m_sfxPlayer;
 
         private Queue<PackageOrder> m_currentOrders = new();
@@ -103,6 +104,7 @@ namespace DefaultNamespace.Order
             var newPackageOrder = new PackageOrder(rndOrderData);
             this.m_currentOrders.Enqueue(newPackageOrder);
             this.m_orderSpawned?.Invoke(this, new PackageOrderChangeEventArgs(newPackageOrder));
+            this.m_sfxPlayer.PlayOneShot(this.m_orderNotificationSfxData);
         }
 
         private void OnPackageDelivered(object sender, PackageDeliveryEventArgs args)

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb41f3b225364249b65cb32c3babf662, type: 3}
   m_Name: Level 2
   m_EditorClassIdentifier: 
-  m_initialFrameTime: 6000
+  m_initialFrameTime: 4500
   m_availableOrders:
   - {fileID: 11400000, guid: e3479c0449edf0042ab3add291cff530, type: 2}
   - {fileID: 11400000, guid: 7df97415365a5e74ea1f97fec453a9eb, type: 2}

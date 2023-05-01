@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using Scriptables.Audio;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -32,6 +33,12 @@ namespace Audio
         {
             if (sfxData == null)
                 return;
+
+            var audioSources = this.GetComponents<AudioSource>();
+
+            if (audioSources.Any(audioSource => audioSource.clip == sfxData.AudioClip))
+                return;
+            
             this.StartCoroutine(this.PlayClipAndDestroySource(sfxData));
         }
 
