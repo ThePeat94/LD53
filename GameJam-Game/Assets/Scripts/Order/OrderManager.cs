@@ -52,7 +52,7 @@ namespace DefaultNamespace.Order
         private void Awake()
         {
             this.m_availableOrders = this.m_levelData.AvailableOrders.ToList();
-            this.m_currentOrderSpawnFrameCountdown = Random.Range(this.m_levelData.MinFramesForOrderSpawn, this.m_levelData.MaxFramesForOrderSpawn + 1);
+            this.m_currentOrderSpawnFrameCountdown = this.m_levelData.FirstOrderAfterFrames;
                 
             if (this.m_endPoint is null)
             {

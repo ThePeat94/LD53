@@ -11,11 +11,14 @@ namespace Scriptables
         [SerializeField] private int m_neededOrdersToFulfill;
         [SerializeField] private int m_minFramesForOrderSpawn;
         [SerializeField] private int m_maxFramesForOrderSpawn;
-        
+        [SerializeField] private int m_firstOrderAfterFrames;
+
+
         public int InitialFrameTime => this.m_initialFrameTime;
         public IReadOnlyList<OrderData> AvailableOrders => this.m_availableOrders;
         public int NeededOrdersToFulfill => this.m_neededOrdersToFulfill;
         public int MinFramesForOrderSpawn => this.m_minFramesForOrderSpawn;
         public int MaxFramesForOrderSpawn => this.m_maxFramesForOrderSpawn;
+        public int FirstOrderAfterFrames => this.m_firstOrderAfterFrames;
     }
 }

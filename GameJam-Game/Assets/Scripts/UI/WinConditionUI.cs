@@ -15,6 +15,10 @@ namespace UI
         {
             this.m_gameWinner = FindObjectOfType<GameWinner>();
             this.m_gameWinner.SucceededOrder += this.OnSuccessfulOrder;
+        }
+
+        private void Start()
+        {
             this.m_ordersNeededText.text = $"{this.m_gameWinner.CurrentDeliveredOrders}/{this.m_gameWinner.AmountOfOrdersToWin} Orders";
         }
 
