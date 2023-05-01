@@ -15,6 +15,7 @@ namespace Player
         private InputProcessor m_inputProcessor;
 
         private IInteractable m_currentInteractable;
+        private Highlighter m_currentInteractableHighlight;
 
         private void Awake()
         {
@@ -22,6 +23,15 @@ namespace Player
             this.m_inputProcessor.InteractTriggered += this.OnInteractTriggered;
 
             this.m_interactingEntity = this.GetComponent<InteractingEntity>();
+        }
+
+        private void FixedUpdate()
+        {
+            var foundOverlapped = this.FindOverlappedObjectsByInteractionCollider();
+            var foundInteractable = foundOverlapped.FirstOrDefault(c => c.GetComponentInParent<Highlighter>() != null);
+            var previous = this.m_currentInteractableHighlight;
+            this.m_currentInteractableHighlight = foundInteractable?.GetComponentInParent<Highlighter>();
+            this.ApplyHighlights(previous, this.m_currentInteractableHighlight);
         }
 
         private void OnDestroy()
@@ -36,12 +46,13 @@ namespace Player
 
         private void CheckForInteractable()
         {
-            var bounds = this.m_interactionCollider.bounds;
-            var overlappedByCollider = Physics.OverlapBox(bounds.center, bounds.extents, this.m_interactionCollider.transform.rotation);
+            var overlappedByCollider = this.FindOverlappedObjectsByInteractionCollider();
             
             var foundInteractable = overlappedByCollider.FirstOrDefault(c => c.GetComponentInParent<IInteractable>() != null);
             if (foundInteractable is null)
+            {
                 return;
+            }
             
             var interactableTarget = foundInteractable.GetComponentInParent<IInteractable>();
             if (this.m_currentInteractable is not null)
@@ -55,6 +66,36 @@ namespace Player
             }
             Debug.Log($"Interacting with \"{foundInteractable.name}\"");
             this.m_currentInteractable = interactableTarget.Interact(this.m_interactingEntity);
+        }
+
+        private Collider[] FindOverlappedObjectsByInteractionCollider()
+        {
+            return Physics.OverlapBox(this.m_interactionCollider.bounds.center, this.m_interactionCollider.bounds.extents, this.m_interactionCollider.transform.rotation);
+        }
+
+        private void ApplyHighlights(Highlighter previous, Highlighter current)
+        {
+            if (previous == current)
+                return;
+
+            if (previous is not null && current is not null)
+            {
+                previous.RemoveHighlight();
+                current.Highlight();
+                return;
+            }
+
+            if (previous is null && current is not null)
+            {
+                current.Highlight();
+                return;
+            }
+
+            if (previous is not null && current is null)
+            {
+                previous.RemoveHighlight();
+                return;
+            }
         }
     }
 }

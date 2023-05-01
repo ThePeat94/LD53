@@ -6,7 +6,7 @@ namespace Interactable
     public class ComponentTray : MonoBehaviour, IInteractable
     {
         [SerializeField] private Transform m_componentHolderParent;
-
+        
         private IInteractable m_currentDepositedObject;
 
         public IInteractable Interact(InteractingEntity interactingEntity)

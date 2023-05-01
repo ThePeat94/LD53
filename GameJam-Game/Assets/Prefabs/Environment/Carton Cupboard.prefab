@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7611256558290718393}
   - component: {fileID: 5613866193974088779}
   - component: {fileID: 8089895142229555699}
+  - component: {fileID: 936166513637398697}
+  - component: {fileID: 1697462517494377255}
   m_Layer: 0
   m_Name: Carton Cupboard
   m_TagString: Untagged
@@ -69,6 +71,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_containedComponent: {fileID: 11400000, guid: e43bb98462f26b34ebf827b5c34121fa, type: 2}
   m_collider: {fileID: 5613866193974088779}
+--- !u!114 &936166513637398697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2243148728050173564}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.2269896, g: 0.764151, b: 0, a: 1}
+  outlineWidth: 3.7
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &1697462517494377255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2243148728050173564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d966a67200ba4d139585643e38f72a49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_outline: {fileID: 936166513637398697}
 --- !u!1001 &454971905394120473
 PrefabInstance:
   m_ObjectHideFlags: 0

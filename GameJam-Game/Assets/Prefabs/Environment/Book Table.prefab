@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8237185054491241576}
   - component: {fileID: 8301779118647186087}
   - component: {fileID: 5340421801700334028}
+  - component: {fileID: 2439599179338012066}
+  - component: {fileID: 6200980594310731633}
   m_Layer: 0
   m_Name: Book Table
   m_TagString: Untagged
@@ -34,12 +36,12 @@ Transform:
   - {fileID: 9131033526305482013}
   - {fileID: 28641183577229406}
   - {fileID: 7776282872095965844}
-  - {fileID: 3763903802249221068}
+  - {fileID: 4255879185080105404}
   - {fileID: 863872061244330110}
   - {fileID: 6377260572016343837}
   - {fileID: 9040562149127755208}
   - {fileID: 6884935790002907470}
-  - {fileID: 9095449355727473742}
+  - {fileID: 8145463608253490746}
   - {fileID: 6380009632788630582}
   - {fileID: 5499493366647802564}
   m_Father: {fileID: 0}
@@ -80,6 +82,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.9719877, y: 2.7136354, z: 1.9957438}
   m_Center: {x: -0.00000047683716, y: 1.3500412, z: -0.012101442}
+--- !u!114 &2439599179338012066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3755211379574010833}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.2269896, g: 0.764151, b: 0, a: 1}
+  outlineWidth: 3.7
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &6200980594310731633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3755211379574010833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d966a67200ba4d139585643e38f72a49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_outline: {fileID: 2439599179338012066}
 --- !u!1001 &346475978567547401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -273,7 +306,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39eaed5e4d6629649a75000b21750e2a, type: 3}
---- !u!4 &3763903802249221068 stripped
+--- !u!4 &4255879185080105404 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1095492917413489271, guid: 39eaed5e4d6629649a75000b21750e2a, type: 3}
   m_PrefabInstance: {fileID: 3763903802249221067}
@@ -871,7 +904,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39eaed5e4d6629649a75000b21750e2a, type: 3}
---- !u!4 &9095449355727473742 stripped
+--- !u!4 &8145463608253490746 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1095492917413489271, guid: 39eaed5e4d6629649a75000b21750e2a, type: 3}
   m_PrefabInstance: {fileID: 9095449355727473741}
