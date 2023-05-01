@@ -49,6 +49,10 @@ public class Timer : MonoBehaviour{
     {
         Debug.Log("Package Expired");
         this.m_remainingFrameTime -= eventArgs.PackageOrder.OrderData.PunishFrames;
+        if (this.m_remainingFrameTime <= 0)
+        {
+            this.m_timeUp?.Invoke(this, System.EventArgs.Empty);
+        }
     }
     
     private void OnPackageOrderDelivered(object sender, PackageOrderChangeEventArgs eventArgs)
@@ -63,14 +67,14 @@ public class Timer : MonoBehaviour{
         {
             return;
         }
-        if (this.m_remainingFrameTime == 0)
+        if (this.m_remainingFrameTime <= 0)
         {
             return;
         }
 
         this.m_remainingFrameTime--;
 
-        if (this.m_remainingFrameTime == 0)
+        if (this.m_remainingFrameTime <= 0)
         {
             this.m_timeUp?.Invoke(this, System.EventArgs.Empty);
         }
