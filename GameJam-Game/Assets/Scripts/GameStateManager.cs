@@ -85,6 +85,20 @@ namespace DefaultNamespace
                     this.m_mainGameUI.HideInstructionsPanel();
                 }
             }
+
+            if (this.m_currentState == State.Won)
+            {
+                if (this.m_inputProcessor.ConfirmInstructionsTriggered)
+                {
+                    var nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+                    if (nextSceneIndex >= SceneManager.sceneCountInBuildSettings)
+                    {
+                        SceneManager.LoadScene(0);
+                        return;
+                    }
+                    SceneManager.LoadScene(nextSceneIndex);
+                }
+            }
         }
 
         public enum State
