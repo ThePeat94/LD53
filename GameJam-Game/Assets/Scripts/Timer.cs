@@ -17,26 +17,27 @@ public class Timer : MonoBehaviour{
         remove => this.m_timeUp -= value;
     }
 
-    public int InitalFrameTime => m_initalFrameTime;
+    public int InitalFrameTime => this.m_initalFrameTime;
 
-    public int RemainingFrameTime => m_remainingFrameTime;
+    public int RemainingFrameTime => this.m_remainingFrameTime;
 
     private void Start()
     {
-        m_remainingFrameTime = m_initalFrameTime;
+        this.m_remainingFrameTime = this.m_initalFrameTime;
     }
 
     private void FixedUpdate()
     {
-        if (m_remainingFrameTime == 0)
+        if (this.m_remainingFrameTime == 0)
         {
             return;
         }
-        m_remainingFrameTime--;
 
-        if (m_remainingFrameTime == 0)
+        this.m_remainingFrameTime--;
+
+        if (this.m_remainingFrameTime == 0)
         {
-            m_timeUp?.Invoke(this, System.EventArgs.Empty);
+            this.m_timeUp?.Invoke(this, System.EventArgs.Empty);
         }
     }
 }
