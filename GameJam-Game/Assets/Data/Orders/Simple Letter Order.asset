@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Simple Letter Order
   m_EditorClassIdentifier: 
   m_name: Stamped Letter
-  m_icon: {fileID: 21300000, guid: e9775ec4ca6afe244a642634077b2074, type: 3}
+  m_icon: {fileID: 21300000, guid: 8c0f91f67bb7e36408fa2facbb0c0118, type: 3}
   m_neededComponents:
   - {fileID: 11400000, guid: ce0da9de51c2c85449f714ba315bf2a9, type: 2}
   - {fileID: 11400000, guid: c5fea7c981e244942b50bba3a5b68300, type: 2}
   - {fileID: 11400000, guid: 9f17234fcc99dac4ab81488b92a1dfcb, type: 2}
   m_frameTime: 3000
   m_punishFrames: 200
+  m_rewardFrames: 100

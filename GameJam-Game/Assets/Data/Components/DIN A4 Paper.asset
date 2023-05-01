@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: DIN A4 Paper
   m_EditorClassIdentifier: 
   m_componentName: DIN A4 Paper
-  m_icon: {fileID: 0}
+  m_icon: {fileID: 21300000, guid: 86db240d8f340914a913c236baf288c2, type: 3}
   m_model: {fileID: 7471508689020267509, guid: 826daa49b8bb4d843a0313995ac6dad4, type: 3}
+  m_compatibleComponents: []
