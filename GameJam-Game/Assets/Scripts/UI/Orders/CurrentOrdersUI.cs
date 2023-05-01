@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DefaultNamespace.Order;
+using EventArgs;
 using UnityEngine;
 
 namespace UI
@@ -20,20 +21,39 @@ namespace UI
             {
                 this.m_orderManager = FindObjectOfType<OrderManager>();
             }
-            this.m_orderManager.OrdersChanged += this.OnOrdersChanged;
+            this.m_orderManager.OrdersSpawned += this.OnOrdersSpawned;
+            this.m_orderManager.OrderDelivered += this.OnOrderDelivered;
+            this.m_orderManager.OrderExpired += this.OnOrderExpired;
         }
 
-        private void OnOrdersChanged(object sender, System.EventArgs e)
+        private void OnOrderDelivered(object sender, PackageOrderChangeEventArgs e)
         {
-            foreach (var order in this.m_orderManager.CurrentOrders)
-            {
-                if(this.m_orderUis.ContainsKey(order))
-                    continue;
-                
-                var instantiatedOrderUi = Instantiate(this.m_orderUiPrefab, this.m_orderUiParent);
-                instantiatedOrderUi.Init(order);
-                this.m_orderUis.Add(order, instantiatedOrderUi);
-            }
+            this.RemoveOrderFromUI(e.PackageOrder);
+        }
+
+        private void OnOrderExpired(object sender, PackageOrderChangeEventArgs e)
+        {
+            this.RemoveOrderFromUI(e.PackageOrder);
+        }
+
+        private void RemoveOrderFromUI(PackageOrder order)
+        {
+            if (!this.m_orderUis.ContainsKey(order))
+                return;
+
+            var orderUi = this.m_orderUis[order];
+            this.m_orderUis.Remove(order);
+            Destroy(orderUi.gameObject);
+        }
+
+        private void OnOrdersSpawned(object sender, PackageOrderChangeEventArgs e)
+        {
+            if(this.m_orderUis.ContainsKey(e.PackageOrder)) 
+                return;
+            
+            var instantiatedOrderUi = Instantiate(this.m_orderUiPrefab, this.m_orderUiParent);
+            instantiatedOrderUi.Init(e.PackageOrder);
+            this.m_orderUis.Add(e.PackageOrder, instantiatedOrderUi);
         }
     }
 }

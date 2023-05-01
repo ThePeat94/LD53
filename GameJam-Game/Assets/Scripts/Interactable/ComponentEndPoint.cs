@@ -10,26 +10,28 @@ namespace Interactable
 {
     public class ComponentEndPoint : MonoBehaviour, IInteractable
     {
-        private EventHandler m_PackageDelivered;
+        private EventHandler<PackageDeliveryEventArgs> m_packageDelivered;
+
+        public event EventHandler<PackageDeliveryEventArgs> PackageDelivered
+        {
+            add => this.m_packageDelivered += value;
+            remove => this.m_packageDelivered -= value;
+        }
 
         public IInteractable Interact(InteractingEntity interactingEntity)
         {
             Debug.Log("Can not use");
             return interactingEntity.ComponentHolder.childCount == 1 ? interactingEntity.ComponentHolder.GetChild(0).GetComponent<IInteractable>() : null;
         }
-        
-        public event EventHandler PackageDelivered
-        {
-            add => this.m_PackageDelivered += value;
-            remove => this.m_PackageDelivered -= value;
-        }
 
         public IInteractable InteractUsingInteractable(InteractingEntity interactingEntity, IInteractable interactable)
         {
-            ComponentPackage componentPackage = interactingEntity.ComponentHolder.GetComponentInChildren<ComponentPackage>();
-            m_PackageDelivered?.Invoke(this,new PackageDeliveryEventArgs(componentPackage));
+            if (interactable is not ComponentPackage componentPackage)
+                return interactable;
             
-            Destroy(interactingEntity.ComponentHolder.GetChild(0).gameObject);
+            this.m_packageDelivered?.Invoke(this,new PackageDeliveryEventArgs(componentPackage));
+            
+            Destroy(componentPackage.gameObject);
             return null;
         }
 

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_componentName: Envelope
   m_icon: {fileID: 0}
-  m_model: {fileID: 7599295668473179506, guid: e346f9654a56f384d8ce68288b549caf, type: 3}
+  m_model: {fileID: 8673420924320384912, guid: dbfa33f29aec9bd478312a5a97e64f4c, type: 3}

@@ -55,10 +55,10 @@ namespace Interactable
                 return null;
             }
             
-            if (interactable is ComponentPackage)
+            if (interactable is ComponentPackage cp)
             {
                 Debug.Log("Inserting Component package");
-                this.m_currentComponentPackage = interactable as ComponentPackage;
+                this.m_currentComponentPackage = cp;
                 this.m_currentComponentPackage.transform.SetParent(this.m_componentPackagePlace);
                 this.m_currentComponentPackage.transform.localPosition = Vector3.zero;
                 this.m_currentComponentPackage.Deactivate();

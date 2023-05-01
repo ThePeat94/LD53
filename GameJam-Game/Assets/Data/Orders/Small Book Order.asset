@@ -16,6 +16,7 @@ MonoBehaviour:
   m_icon: {fileID: 0}
   m_neededComponents:
   - {fileID: 11400000, guid: 0fadfe7fb63940242a6feb1987cd9aa8, type: 2}
-  - {fileID: 11400000, guid: 76671e43d1ceb0c468115010446f6fd6, type: 2}
+  - {fileID: 11400000, guid: e43bb98462f26b34ebf827b5c34121fa, type: 2}
   - {fileID: 11400000, guid: c5fea7c981e244942b50bba3a5b68300, type: 2}
   m_frameTime: 1800
+  m_expiringTime: 60

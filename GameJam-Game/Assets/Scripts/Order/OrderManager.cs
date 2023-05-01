@@ -10,7 +10,9 @@ namespace DefaultNamespace.Order
 {
     public class OrderManager : MonoBehaviour
     {
-        private EventHandler m_ordersChanged;
+        private EventHandler<PackageOrderChangeEventArgs> m_orderSpawned;
+        private EventHandler<PackageOrderChangeEventArgs> m_orderExpired;
+        private EventHandler<PackageOrderChangeEventArgs> m_orderDelivered;
 
         [SerializeField] private List<OrderData> m_availableOrders;
 
@@ -22,10 +24,22 @@ namespace DefaultNamespace.Order
 
         private ComponentEndPoint m_endPoint;
 
-        public event EventHandler OrdersChanged
+        public event EventHandler<PackageOrderChangeEventArgs> OrdersSpawned
         {
-            add => this.m_ordersChanged += value;
-            remove => this.m_ordersChanged -= value;
+            add => this.m_orderSpawned += value;
+            remove => this.m_orderSpawned -= value;
+        }
+        
+        public event EventHandler<PackageOrderChangeEventArgs> OrderExpired
+        {
+            add => this.m_orderExpired += value;
+            remove => this.m_orderExpired -= value;
+        }
+        
+        public event EventHandler<PackageOrderChangeEventArgs> OrderDelivered
+        {
+            add => this.m_orderDelivered += value;
+            remove => this.m_orderDelivered -= value;
         }
         
         public IReadOnlyCollection<PackageOrder> CurrentOrders => this.m_currentOrders;
@@ -43,8 +57,14 @@ namespace DefaultNamespace.Order
 
         private void FixedUpdate()
         {
-            if(this.m_currentOrders.Count >= this.m_maxOrders) return;
-            
+            this.ExpireOrders();
+            this.SpawnNewOrders();
+        }
+
+        private void SpawnNewOrders()
+        {
+            if (this.m_currentOrders.Count >= this.m_maxOrders) return;
+
             this.m_currentOrderSpawnFrameCountdown--;
             if (this.m_currentOrderSpawnFrameCountdown <= 0)
             {
@@ -53,17 +73,13 @@ namespace DefaultNamespace.Order
                 var rndOrderData = this.m_availableOrders[UnityEngine.Random.Range(0, this.m_availableOrders.Count)];
                 var newPackageOrder = new PackageOrder(rndOrderData);
                 this.m_currentOrders.Enqueue(newPackageOrder);
-                this.m_ordersChanged?.Invoke(this, System.EventArgs.Empty);
+                this.m_orderSpawned?.Invoke(this, new PackageOrderChangeEventArgs(newPackageOrder));
             }
-            
-            
-            
         }
 
-        private void OnPackageDelivered(object sender, System.EventArgs args)
+        private void OnPackageDelivered(object sender, PackageDeliveryEventArgs args)
         {
-            PackageDeliveryEventArgs eventArgs = (PackageDeliveryEventArgs) args;
-            this.PackageWasCompleted(eventArgs.EventPackage);
+            this.PackageWasCompleted(args.EventPackage);
         }
 
         private void PackageWasCompleted(ComponentPackage deliveredPackage)
@@ -106,13 +122,14 @@ namespace DefaultNamespace.Order
             var listedOrders = this.m_currentOrders.ToList();
             listedOrders.RemoveAt(index);
             this.m_currentOrders = new Queue<PackageOrder>(listedOrders);
-            this.m_ordersChanged?.Invoke(this, System.EventArgs.Empty);
+            this.m_orderDelivered?.Invoke(this, new PackageOrderChangeEventArgs(orderWithAll));
         }
 
         public void ExpireOrders()
         {
 
-            var copiedOrders = m_currentOrders.ToList();
+            var copiedOrders = this.m_currentOrders.ToList();
+            var expiredOrders = new List<PackageOrder>();
             var index = 0;
             foreach (var order in this.m_currentOrders)
             {
@@ -120,15 +137,19 @@ namespace DefaultNamespace.Order
                 if (order.CurrentFrameCountdown <= 0)
                 {
                     copiedOrders.RemoveAt(index);
+                    expiredOrders.Add(order);
                 }
 
                 index++;
             }
 
-            if (copiedOrders.Count != m_currentOrders.Count)
+            if (copiedOrders.Count != this.m_currentOrders.Count)
             {
                 this.m_currentOrders = new Queue<PackageOrder>(copiedOrders);
-                this.m_ordersChanged?.Invoke(this, System.EventArgs.Empty);
+                foreach (var expiredOrder in expiredOrders)
+                {
+                    this.m_orderExpired?.Invoke(this, new PackageOrderChangeEventArgs(expiredOrder));
+                }
             }
         }
     }

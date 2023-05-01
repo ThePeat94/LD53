@@ -60,6 +60,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Paper Component
       objectReference: {fileID: 0}
+    - target: {fileID: 9201627751928533946, guid: e346f9654a56f384d8ce68288b549caf, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0.024097262
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201627751928533946, guid: e346f9654a56f384d8ce68288b549caf, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.88186
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201627751928533946, guid: e346f9654a56f384d8ce68288b549caf, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.36042923
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
