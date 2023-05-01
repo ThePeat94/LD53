@@ -23,7 +23,7 @@ namespace DefaultNamespace.Order
         private int m_currentOrderSpawnFrameCountdown;
         private int m_maxOrders = 5;
         private readonly int m_orderSpawnFrameTime = 30;
-
+        
         private ComponentEndPoint m_endPoint;
 
         public event EventHandler<PackageOrderChangeEventArgs> OrdersSpawned
@@ -56,6 +56,7 @@ namespace DefaultNamespace.Order
             }
             this.m_endPoint.PackageDelivered += this.OnPackageDelivered;
         }
+
 
         private void FixedUpdate()
         {
