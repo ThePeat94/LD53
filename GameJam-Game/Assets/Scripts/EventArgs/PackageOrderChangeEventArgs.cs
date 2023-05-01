@@ -9,6 +9,6 @@ namespace EventArgs
             this.PackageOrder = packageOrder;
         }
         
-        public PackageOrder PackageOrder { get; set; }
+        public PackageOrder PackageOrder { get; }
     }
 }

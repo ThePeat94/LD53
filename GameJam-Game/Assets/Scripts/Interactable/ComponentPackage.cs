@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DefaultNamespace;
+using EventArgs;
 using JetBrains.Annotations;
 using Scriptables;
 using UnityEngine;
@@ -12,15 +13,23 @@ namespace Interactable
         [SerializeField] private Collider m_collider;
         [SerializeField] private ComponentData initialData;
 
+        private EventHandler<ComponentAddedEventArgs> m_componentAdded;
+        
         private List<ComponentData> m_componentDatas = new();
 
+        
+        public event EventHandler<ComponentAddedEventArgs> ComponentAdded
+        {
+            add => this.m_componentAdded += value;
+            remove => this.m_componentAdded -= value;
+        }
 
         public IReadOnlyList<ComponentData> ContainedComponents => this.m_componentDatas;
         public ComponentData ComponentData => this.initialData;
         
         private void Start()
         {
-            this.AddComponent(initialData);
+            this.AddComponent(this.initialData);
         }
 
         private void Awake()
@@ -32,6 +41,7 @@ namespace Interactable
         public void AddComponent(ComponentData data)
         {
             this.m_componentDatas.Add(data);
+            this.m_componentAdded?.Invoke(this, new(data));
         }
 
         public IInteractable Interact(InteractingEntity interactingEntity)
