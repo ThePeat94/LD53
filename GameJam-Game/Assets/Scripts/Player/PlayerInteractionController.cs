@@ -44,11 +44,13 @@ namespace Player
                 return;
             
             var interactableTarget = foundInteractable.GetComponentInParent<IInteractable>();
-            if (this.m_currentInteractable is not null &&
-                interactableTarget.CanInteractUsingInteractable(this.m_currentInteractable))
+            if (this.m_currentInteractable is not null)
             {
-                Debug.Log($"Interacting with \"{foundInteractable.name}\" using \"{this.m_currentInteractable}\"");
-                this.m_currentInteractable = interactableTarget.InteractUsingInteractable(this.m_interactingEntity, this.m_currentInteractable);
+                if (interactableTarget.CanInteractUsingInteractable(this.m_currentInteractable))
+                {
+                    Debug.Log($"Interacting with \"{foundInteractable.name}\" using \"{this.m_currentInteractable}\"");
+                    this.m_currentInteractable = interactableTarget.InteractUsingInteractable(this.m_interactingEntity, this.m_currentInteractable);
+                }
                 return;
             }
             Debug.Log($"Interacting with \"{foundInteractable.name}\"");
