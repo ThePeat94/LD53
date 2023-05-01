@@ -15,6 +15,7 @@ namespace DefaultNamespace
         [SerializeField] private SfxPlayer m_sfxPlayer;
         [SerializeField] private SfxData m_instructionsSfx;
         [SerializeField] private SfxData m_gameWonSfxData;
+        [SerializeField] private SfxData m_gameWonVoiceSfxData;
         [SerializeField] private SfxData m_gameLostSfxData;
         [SerializeField] private SfxData m_gameLostVoiceSfxData;
         
@@ -65,6 +66,7 @@ namespace DefaultNamespace
             this.m_currentState = State.Won;
             this.m_mainGameUI.ShowGameWonPanel();
             this.m_sfxPlayer.PlayOneShot(this.m_gameWonSfxData);
+            this.m_sfxPlayer.PlayOneShot(this.m_gameWonVoiceSfxData);
         }
 
         private void Update()

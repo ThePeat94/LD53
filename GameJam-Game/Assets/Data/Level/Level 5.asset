@@ -18,7 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b1529e902ad08254287340109f4aa50a, type: 2}
   - {fileID: 11400000, guid: 32cca6b1000089b48bff0fe152ac023a, type: 2}
   - {fileID: 11400000, guid: 7df97415365a5e74ea1f97fec453a9eb, type: 2}
-  m_neededOrdersToFulfill: 5
+  m_neededOrdersToFulfill: 9
   m_minFramesForOrderSpawn: 250
   m_maxFramesForOrderSpawn: 750
   m_firstOrderAfterFrames: 200

@@ -21,4 +21,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 10335a9c89e980645878bcacf054cb4a, type: 2}
   m_frameTime: 3000
   m_punishFrames: 200
-  m_rewardFrames: 100
+  m_rewardFrames: 350
