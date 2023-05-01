@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Audio;
 using EventArgs;
 using Interactable;
 using Scriptables;
+using Scriptables.Audio;
+using Unity.VisualScripting;
 using Unity.XR.OpenVR;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -18,6 +21,10 @@ namespace DefaultNamespace.Order
 
         [SerializeField] private LevelData m_levelData;
         [SerializeField] private GameStateManager m_gameStateManager;
+        [SerializeField] private SfxData m_orderDeliveredSfxData;
+        [SerializeField] private SfxData m_orderExpiredSfxData;
+        [SerializeField] private SfxData m_notFittingOrderSfxData;
+        [SerializeField] private SfxPlayer m_sfxPlayer;
 
         private Queue<PackageOrder> m_currentOrders = new();
 
@@ -63,6 +70,8 @@ namespace DefaultNamespace.Order
             {
                 this.m_gameStateManager = FindObjectOfType<GameStateManager>();
             }
+
+            this.m_sfxPlayer = this.GetOrAddComponent<SfxPlayer>();
         }
 
 
@@ -136,12 +145,14 @@ namespace DefaultNamespace.Order
             if (orderWithAll is null)
             {
                 Debug.Log("Order not fullfilled");
+                this.m_sfxPlayer.PlayOneShot(this.m_notFittingOrderSfxData);
                 return;
             }
 
             var listedOrders = this.m_currentOrders.ToList();
             listedOrders.RemoveAt(index);
             this.m_currentOrders = new Queue<PackageOrder>(listedOrders);
+            this.m_sfxPlayer.PlayOneShot(this.m_orderDeliveredSfxData);
             this.m_orderDelivered?.Invoke(this, new PackageOrderChangeEventArgs(orderWithAll));
 
             if (this.m_currentOrders.Count == 0)
@@ -170,6 +181,7 @@ namespace DefaultNamespace.Order
                 this.m_currentOrders = new Queue<PackageOrder>(copiedOrders);
                 foreach (var expiredOrder in expiredOrders)
                 {
+                    this.m_sfxPlayer.PlayOneShot(this.m_orderExpiredSfxData);
                     this.m_orderExpired?.Invoke(this, new PackageOrderChangeEventArgs(expiredOrder));
                 }
             }

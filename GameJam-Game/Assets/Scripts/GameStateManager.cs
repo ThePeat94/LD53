@@ -12,9 +12,12 @@ namespace DefaultNamespace
     public class GameStateManager : MonoBehaviour
     {
         [SerializeField] private bool m_hasNewInstructions = true;
-        [SerializeField] private SfxPlayer m_instructionsPlayer;
+        [SerializeField] private SfxPlayer m_sfxPlayer;
         [SerializeField] private SfxData m_instructionsSfx;
-
+        [SerializeField] private SfxData m_gameWonSfxData;
+        [SerializeField] private SfxData m_gameLostSfxData;
+        [SerializeField] private SfxData m_gameLostVoiceSfxData;
+        
 
         private State m_currentState;
 
@@ -33,6 +36,9 @@ namespace DefaultNamespace
             this.m_timer = FindObjectOfType<Timer>();
             this.m_gameWinner.GameWon += this.OnGameWon;
             this.m_timer.TimeUp += this.OnTimeUp;
+            
+            if(this.m_sfxPlayer == null)
+                this.m_sfxPlayer = this.GetOrAddComponent<SfxPlayer>();
         }
 
         private void Start()
@@ -41,8 +47,8 @@ namespace DefaultNamespace
             if (this.m_hasNewInstructions)
             {
                 this.m_mainGameUI.ShowInstructionsPanel();
-                if (this.m_instructionsPlayer != null)
-                    this.m_instructionsPlayer.PlayOneShot(this.m_instructionsSfx);
+                if (this.m_sfxPlayer != null)
+                    this.m_sfxPlayer.PlayOneShot(this.m_instructionsSfx);
             }
         }
 
@@ -50,12 +56,15 @@ namespace DefaultNamespace
         {
             this.m_currentState = State.Lost;
             this.m_mainGameUI.ShowGameLostPanel();
+            this.m_sfxPlayer.PlayOneShot(this.m_gameLostSfxData);
+            this.m_sfxPlayer.PlayOneShot(this.m_gameLostVoiceSfxData);
         }
 
         private void OnGameWon(object sender, System.EventArgs e)
         {
             this.m_currentState = State.Won;
             this.m_mainGameUI.ShowGameWonPanel();
+            this.m_sfxPlayer.PlayOneShot(this.m_gameWonSfxData);
         }
 
         private void Update()
@@ -92,7 +101,7 @@ namespace DefaultNamespace
                     this.m_currentState = State.Playing;
                     this.m_mainGameUI.HideInstructionsPanel();
                     if (this.m_instructionsSfx != null)
-                        this.m_instructionsPlayer.MuteAll();
+                        this.m_sfxPlayer.MuteAll();
                 }
             }
 

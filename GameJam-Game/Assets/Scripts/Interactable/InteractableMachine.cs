@@ -1,7 +1,10 @@
 ﻿using System;
+using Audio;
 using DefaultNamespace;
 using EventArgs;
 using Scriptables;
+using Scriptables.Audio;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Interactable
@@ -10,6 +13,10 @@ namespace Interactable
     {
         [SerializeField] private ComponentData m_needsComponent;
         [SerializeField] private Transform m_componentPackagePlace;
+        [SerializeField] private SfxData m_usageSfxData;
+        [SerializeField] private SfxData m_noComponentPackageSfxData;
+        [SerializeField] private SfxData m_noComponentObjectSfxData;
+        [SerializeField] private SfxPlayer m_sfxPlayer;
 
         private EventHandler<ComponentAddedEventArgs> m_componentAdded;
         private EventHandler<ComponentAddedEventArgs> m_componentConsumed;
@@ -29,7 +36,12 @@ namespace Interactable
         {
             add => this.m_componentConsumed += value;
             remove => this.m_componentConsumed -= value;
-        } 
+        }
+
+        private void Awake()
+        {
+            this.m_sfxPlayer = this.GetOrAddComponent<SfxPlayer>();
+        }
 
         public IInteractable Interact(InteractingEntity interactingEntity)
         {
@@ -43,9 +55,17 @@ namespace Interactable
                 return toReturn;
             }
             
-            if (this.m_currentComponentData is null || this.m_currentComponentPackage is null)
+            if (this.m_currentComponentData is null)
             {
                 Debug.Log("Empty machine, nothing to do.");
+                this.m_sfxPlayer.PlayOneShot(this.m_noComponentObjectSfxData);
+                return null;
+            }
+
+            if (this.m_currentComponentPackage is null)
+            {
+                Debug.Log("No component package");
+                this.m_sfxPlayer.PlayOneShot(this.m_noComponentPackageSfxData);
                 return null;
             }
             
@@ -54,7 +74,7 @@ namespace Interactable
             var consumed = this.m_currentComponentData;
             this.m_currentComponentData = null;
             this.m_componentConsumed?.Invoke(this, new(consumed));
-
+            this.m_sfxPlayer.PlayOneShot(this.m_usageSfxData);
             return null;
         }
 

@@ -333,6 +333,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_containedComponent: {fileID: 11400000, guid: c5fea7c981e244942b50bba3a5b68300, type: 2}
   m_collider: {fileID: 1738834076885518660}
+  m_takeSfxData: {fileID: 11400000, guid: 16ef936ed5a91dd46afb27fa44731ee6, type: 2}
+  m_sfxPlayer: {fileID: 0}
 --- !u!114 &1397170171056556479
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -62,6 +62,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_containedComponent: {fileID: 11400000, guid: 0fadfe7fb63940242a6feb1987cd9aa8, type: 2}
   m_collider: {fileID: 5340421801700334028}
+  m_takeSfxData: {fileID: 11400000, guid: 16ef936ed5a91dd46afb27fa44731ee6, type: 2}
+  m_sfxPlayer: {fileID: 0}
 --- !u!65 &5340421801700334028
 BoxCollider:
   m_ObjectHideFlags: 0

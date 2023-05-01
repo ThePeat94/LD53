@@ -46,8 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hasNewInstructions: 1
-  m_instructionsPlayer: {fileID: 2842030578201445960}
+  m_sfxPlayer: {fileID: 2842030578201445960}
   m_instructionsSfx: {fileID: 0}
+  m_gameWonSfxData: {fileID: 11400000, guid: 3b05612f7de2881479cb8c2a6a90ecae, type: 2}
+  m_gameLostSfxData: {fileID: 11400000, guid: dd363fac057c3df4499c09dfb9fb3954, type: 2}
+  m_gameLostVoiceSfxData: {fileID: 11400000, guid: 3d6270678f4b90c41841cc96aa4f911f, type: 2}
 --- !u!114 &2842030578201445960
 MonoBehaviour:
   m_ObjectHideFlags: 0

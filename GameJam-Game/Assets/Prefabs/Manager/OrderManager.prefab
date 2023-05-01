@@ -46,3 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_levelData: {fileID: 11400000, guid: 4da9a98c1ce2ffc4cb61c4cfcc19310f, type: 2}
   m_gameStateManager: {fileID: 0}
+  m_orderDeliveredSfxData: {fileID: 11400000, guid: 3c41be3636ae24041aeeff2db0f16668, type: 2}
+  m_orderExpiredSfxData: {fileID: 11400000, guid: 41e28b6188f309b40bf99e76730051d1, type: 2}
+  m_notFittingOrderSfxData: {fileID: 11400000, guid: dda0c1f6d2fb36f49b8c576c3565d348, type: 2}
+  m_sfxPlayer: {fileID: 0}
