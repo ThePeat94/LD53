@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using Audio;
+using Scriptables.Audio;
+using UnityEngine;
 
 namespace UI
 {
@@ -8,7 +11,17 @@ namespace UI
         [SerializeField] private GameObject m_gameWonPanel;
         [SerializeField] private GameObject m_gameLostPanel;
         [SerializeField] private GameObject m_instructionsPanel;
-        
+        [SerializeField] private SfxData loosingSoundData;
+        private SfxPlayer m_sfxPlayer;
+
+        private void Awake()
+        {
+            if (this.m_sfxPlayer is null)
+            {
+                this.m_sfxPlayer = FindObjectOfType<SfxPlayer>();
+            } 
+        }
+
 
         public void ShowGameWonPanel()
         {
@@ -19,6 +32,7 @@ namespace UI
 
         public void ShowGameLostPanel()
         {
+            this.m_sfxPlayer.PlayOneShot(this.loosingSoundData);
             this.m_ordersUI.gameObject.SetActive(false);
             this.m_gameLostPanel.SetActive(true);
             this.m_gameWonPanel.SetActive(false);
