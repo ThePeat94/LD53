@@ -11,7 +11,9 @@ namespace DefaultNamespace.Order
     public class OrderManager : MonoBehaviour
     {
         private EventHandler<PackageOrderChangeEventArgs> m_orderSpawned;
-        private EventHandler<PackageOrderChangeEventArgs> m_orderExpired;
+        // TODO: Subscribe in time manager to this event and cut of time
+        private EventHandler<PackageOrderChangeEventArgs> m_orderExpired; 
+        // TODO: Subscribe in time manager to this event and add time
         private EventHandler<PackageOrderChangeEventArgs> m_orderDelivered;
 
         [SerializeField] private List<OrderData> m_availableOrders;

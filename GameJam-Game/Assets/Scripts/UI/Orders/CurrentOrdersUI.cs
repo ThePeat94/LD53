@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using DefaultNamespace.Order;
 using EventArgs;
+using TMPro;
 using UnityEngine;
 
 namespace UI
@@ -24,6 +26,19 @@ namespace UI
             this.m_orderManager.OrdersSpawned += this.OnOrdersSpawned;
             this.m_orderManager.OrderDelivered += this.OnOrderDelivered;
             this.m_orderManager.OrderExpired += this.OnOrderExpired;
+        }
+
+        private void FixedUpdate()
+        {
+            this.UpdateOrderTime();
+        }
+
+        private void UpdateOrderTime()
+        {
+            foreach (var (packageOrder, uiOrder) in this.m_orderUis)
+            {
+                uiOrder.UpdateTime(packageOrder);
+            }
         }
 
         private void OnOrderDelivered(object sender, PackageOrderChangeEventArgs e)
