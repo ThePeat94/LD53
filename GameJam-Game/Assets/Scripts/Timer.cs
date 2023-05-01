@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace;
 using DefaultNamespace.Order;
 using EventArgs;
 using Scriptables;
@@ -12,6 +13,7 @@ public class Timer : MonoBehaviour{
     private EventHandler m_timeUp;
     private int m_remainingFrameTime;
     private OrderManager m_orderManager;
+    private GameStateManager m_gameStateManager;
 
     public event EventHandler TimeUp
     {
@@ -30,7 +32,10 @@ public class Timer : MonoBehaviour{
         {
             this.m_orderManager = FindObjectOfType<OrderManager>();
         }
-
+        if (this.m_gameStateManager is null)
+        {
+            this.m_gameStateManager = FindObjectOfType<GameStateManager>();
+        }
         this.m_orderManager.OrderExpired += this.OnPackageOrderExpired;
         this.m_orderManager.OrderDelivered += this.OnPackageOrderDelivered;
     }
@@ -54,6 +59,10 @@ public class Timer : MonoBehaviour{
 
     private void FixedUpdate()
     {
+        if (m_gameStateManager.CurrentState != GameStateManager.State.Playing)
+        {
+            return;
+        }
         if (this.m_remainingFrameTime == 0)
         {
             return;
@@ -66,4 +75,5 @@ public class Timer : MonoBehaviour{
             this.m_timeUp?.Invoke(this, System.EventArgs.Empty);
         }
     }
+    
 }
