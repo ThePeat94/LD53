@@ -119,7 +119,7 @@ namespace DefaultNamespace.Order
             {
                 index++;
                 var order = copiedOrderQueue.Dequeue();
-                var foundOrderContainingEachComponent = false;
+                var foundOrderContainingEachComponent = true;
                 if (order.OrderData.NeededComponents.Count != deliveredPackage.ContainedComponents.Count)
                 {
                     continue;
@@ -129,10 +129,9 @@ namespace DefaultNamespace.Order
                 {
                     if (!order.OrderData.NeededComponents.Contains(contained))
                     {
+                        foundOrderContainingEachComponent = false;
                         break;
                     }
-
-                    foundOrderContainingEachComponent = true;
                 }
 
                 if (foundOrderContainingEachComponent)
