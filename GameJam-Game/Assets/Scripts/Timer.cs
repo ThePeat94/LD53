@@ -6,25 +6,37 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour{
+    
+    [SerializeField] private int m_initalFrameTime;
+    private EventHandler m_timeUp;
+    private int m_remainingFrameTime;
 
-    float currentTime = 1;
-    float stageTime = 300;
+    public event EventHandler TimeUp
+    {
+        add => this.m_timeUp += value;
+        remove => this.m_timeUp -= value;
+    }
 
-    public TextMeshProUGUI CountdownText;
+    public int InitalFrameTime => m_initalFrameTime;
+
+    public int RemainingFrameTime => m_remainingFrameTime;
 
     private void Start()
     {
-        currentTime = stageTime;
+        m_remainingFrameTime = m_initalFrameTime;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        currentTime = currentTime - 1 * Time.deltaTime;
-        CountdownText.text = currentTime.ToString("N0");
-
-        if (currentTime <= 0)
+        if (m_remainingFrameTime == 0)
         {
-            currentTime = 0;
+            return;
+        }
+        m_remainingFrameTime--;
+
+        if (m_remainingFrameTime == 0)
+        {
+            m_timeUp?.Invoke(this, System.EventArgs.Empty);
         }
     }
 }
