@@ -1,5 +1,7 @@
 ﻿using System;
+using Audio;
 using Input;
+using Scriptables.Audio;
 using UI;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,14 +12,17 @@ namespace DefaultNamespace
     public class GameStateManager : MonoBehaviour
     {
         [SerializeField] private bool m_hasNewInstructions = true;
+        [SerializeField] private SfxPlayer m_instructionsPlayer;
+        [SerializeField] private SfxData m_instructionsSfx;
+
 
         private State m_currentState;
-        
+
         private InputProcessor m_inputProcessor;
         private GameWinner m_gameWinner;
         private MainGameUI m_mainGameUI;
         private Timer m_timer;
-        
+
         public State CurrentState => this.m_currentState;
 
         private void Awake()
@@ -36,6 +41,8 @@ namespace DefaultNamespace
             if (this.m_hasNewInstructions)
             {
                 this.m_mainGameUI.ShowInstructionsPanel();
+                if (this.m_instructionsPlayer != null)
+                    this.m_instructionsPlayer.PlayOneShot(this.m_instructionsSfx);
             }
         }
 
@@ -58,15 +65,17 @@ namespace DefaultNamespace
                 if (Application.platform == RuntimePlatform.WebGLPlayer)
                 {
                     SceneManager.LoadScene(0);
-                    return; 
+                    return;
                 }
+
                 Application.Quit();
                 return;
             }
-            
+
             if (this.m_inputProcessor.RetryTriggered)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene(SceneManager.GetActiveScene()
+                    .buildIndex);
                 return;
             }
 
@@ -82,6 +91,8 @@ namespace DefaultNamespace
                 {
                     this.m_currentState = State.Playing;
                     this.m_mainGameUI.HideInstructionsPanel();
+                    if (this.m_instructionsSfx != null)
+                        this.m_instructionsPlayer.MuteAll();
                 }
             }
 
@@ -89,12 +100,14 @@ namespace DefaultNamespace
             {
                 if (this.m_inputProcessor.ConfirmInstructionsTriggered)
                 {
-                    var nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+                    var nextSceneIndex = SceneManager.GetActiveScene()
+                        .buildIndex + 1;
                     if (nextSceneIndex >= SceneManager.sceneCountInBuildSettings)
                     {
                         SceneManager.LoadScene(0);
                         return;
                     }
+
                     SceneManager.LoadScene(nextSceneIndex);
                 }
             }

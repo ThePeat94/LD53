@@ -30,6 +30,8 @@ namespace Audio
         
         public void PlayOneShot(SfxData sfxData)
         {
+            if (sfxData == null)
+                return;
             this.StartCoroutine(this.PlayClipAndDestroySource(sfxData));
         }
 
@@ -46,6 +48,14 @@ namespace Audio
             audioSource.clip = sfxData.AudioClip;
             audioSource.volume = sfxData.Volume * GlobalSettings.Instance.SfxVolume;
             audioSource.Play();
+        }
+
+        public void MuteAll()
+        {
+            foreach (var audioSource in this.GetComponents<AudioSource>())
+            {
+                audioSource.Stop();
+            }
         }
     }
 }

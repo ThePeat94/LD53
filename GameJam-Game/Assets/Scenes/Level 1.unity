@@ -3002,7 +3002,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh209590
+  m_Name: pb_Mesh29260
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3499,6 +3499,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 448107837}
     m_Modifications:
+    - target: {fileID: 5484211889524338682, guid: cf21321418e5d97429dfc5c1eff7c503, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484211889524338682, guid: cf21321418e5d97429dfc5c1eff7c503, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484211889524338682, guid: cf21321418e5d97429dfc5c1eff7c503, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484211889524338682, guid: cf21321418e5d97429dfc5c1eff7c503, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484211889524338682, guid: cf21321418e5d97429dfc5c1eff7c503, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6350002624018640431, guid: cf21321418e5d97429dfc5c1eff7c503, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -3558,6 +3578,26 @@ PrefabInstance:
     - target: {fileID: 8060643740112806787, guid: cf21321418e5d97429dfc5c1eff7c503, type: 3}
       propertyPath: m_SortingOrder
       value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263335039245153406, guid: cf21321418e5d97429dfc5c1eff7c503, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263335039245153406, guid: cf21321418e5d97429dfc5c1eff7c503, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263335039245153406, guid: cf21321418e5d97429dfc5c1eff7c503, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263335039245153406, guid: cf21321418e5d97429dfc5c1eff7c503, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263335039245153406, guid: cf21321418e5d97429dfc5c1eff7c503, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8327868884653147997, guid: cf21321418e5d97429dfc5c1eff7c503, type: 3}
       propertyPath: m_Name
@@ -4057,6 +4097,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6376523732708774402, guid: ae6b29e43afebfa46b05e59ec629af89, type: 3}
+      propertyPath: m_instructionsSfx
+      value: 
+      objectReference: {fileID: 11400000, guid: d2c98b943daf9204c9edfed14108e0ee, type: 2}
     - target: {fileID: 6592883868558474325, guid: ae6b29e43afebfa46b05e59ec629af89, type: 3}
       propertyPath: m_Name
       value: GameStateManager

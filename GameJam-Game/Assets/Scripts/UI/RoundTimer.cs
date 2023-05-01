@@ -53,7 +53,7 @@ namespace UI
         private void OnOrderDelivered(object sender, PackageOrderChangeEventArgs eventArgs)
         {
             this.m_currentChangeDisplayFrame = this.changeFrameCount;
-            this.changeVisualiseField.text = (eventArgs.PackageOrder.OrderData.RewardFrames*Time.fixedDeltaTime).ToString("N0");
+            this.changeVisualiseField.text = (eventArgs.PackageOrder.OrderData.RewardFrames*Time.fixedDeltaTime).ToString("+0");
             this.changeVisualiseField.color = this.normalFillColor;
         }
 
