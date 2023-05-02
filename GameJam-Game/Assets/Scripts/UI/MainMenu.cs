@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace UI
+namespace Nidavellir.UI
 {
     public class MainMenu : MonoBehaviour
     {

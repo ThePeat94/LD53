@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Interactable
+namespace Nidavellir.Interactable
 {
     public class InteractingEntity : MonoBehaviour
     {

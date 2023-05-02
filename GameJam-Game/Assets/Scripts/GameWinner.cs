@@ -1,11 +1,10 @@
 ﻿using System;
-using DefaultNamespace.Order;
-using EventArgs;
-using Scriptables;
-using UI;
+using Nidavellir.EventArgs;
+using Nidavellir.Order;
+using Nidavellir.Scriptables;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Nidavellir
 {
     public class GameWinner : MonoBehaviour
     {

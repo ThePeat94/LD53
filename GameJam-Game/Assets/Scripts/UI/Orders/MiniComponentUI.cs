@@ -1,8 +1,8 @@
-﻿using Scriptables;
+﻿using Nidavellir.Scriptables;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace Nidavellir.UI.Orders
 {
     public class MiniComponentUI : MonoBehaviour
     {

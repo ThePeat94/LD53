@@ -1,9 +1,8 @@
-﻿using System;
-using Interactable;
-using Scriptables;
+﻿using Nidavellir.Interactable;
+using Nidavellir.Scriptables;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Nidavellir
 {
     public class ComponentObject : MonoBehaviour, IInteractable
     {

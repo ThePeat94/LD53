@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scriptables.Audio
+namespace Nidavellir.Scriptables.Audio
 {
     [CreateAssetMenu(fileName = "SfxData", menuName = "Sfx Data", order = 0)]
     public class SfxData : ScriptableObject

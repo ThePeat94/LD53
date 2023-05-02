@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Scriptables
+namespace Nidavellir.Scriptables
 {
     /// <summary>
     /// This Scriptable Object can be used to create several virtual resources for your game. In instance it can be used for RTS games to reflect wood, stone or gold.

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Interactable
+namespace Nidavellir.Interactable
 {
     public class Highlighter : MonoBehaviour
     {

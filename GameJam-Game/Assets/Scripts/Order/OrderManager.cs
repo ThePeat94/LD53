@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Audio;
-using EventArgs;
-using Interactable;
-using Scriptables;
-using Scriptables.Audio;
+using Nidavellir.Audio;
+using Nidavellir.EventArgs;
+using Nidavellir.Interactable;
+using Nidavellir.Scriptables;
+using Nidavellir.Scriptables.Audio;
 using Unity.VisualScripting;
-using Unity.XR.OpenVR;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace DefaultNamespace.Order
+namespace Nidavellir.Order
 {
     public class OrderManager : MonoBehaviour
     {

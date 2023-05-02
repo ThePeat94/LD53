@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scriptables.Audio
+namespace Nidavellir.Scriptables.Audio
 {
     /// <summary>
     /// Use this Scriptable Object to configure your Music Tracks independently from each other. Each available Music Track in your Assets should have one Music Data SO.

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Globalization;
-using DefaultNamespace.Order;
 using DG.Tweening;
+using Nidavellir.Order;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace Nidavellir.UI.Orders
 {
     public class OrderUI : MonoBehaviour
     {

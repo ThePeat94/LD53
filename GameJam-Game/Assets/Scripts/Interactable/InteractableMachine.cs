@@ -1,13 +1,12 @@
 ﻿using System;
-using Audio;
-using DefaultNamespace;
-using EventArgs;
-using Scriptables;
-using Scriptables.Audio;
+using Nidavellir.Audio;
+using Nidavellir.EventArgs;
+using Nidavellir.Scriptables;
+using Nidavellir.Scriptables.Audio;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Interactable
+namespace Nidavellir.Interactable
 {
     public class InteractableMachine : MonoBehaviour, IInteractable
     {

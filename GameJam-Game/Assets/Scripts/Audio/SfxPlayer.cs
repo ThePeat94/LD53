@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Linq;
-using Scriptables.Audio;
+using Nidavellir.Scriptables.Audio;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Audio
+namespace Nidavellir.Audio
 {
     /// <summary>
     /// This Component can be referenced in any other component which might play any Sfx. Be it a looping sound or just playing a Sfx oneshot.

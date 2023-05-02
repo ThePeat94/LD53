@@ -1,6 +1,6 @@
-﻿using Scriptables;
+﻿using Nidavellir.Scriptables;
 
-namespace EventArgs
+namespace Nidavellir.EventArgs
 {
     public class ComponentAddedEventArgs : System.EventArgs
     {

@@ -1,6 +1,6 @@
-﻿using DefaultNamespace.Order;
+﻿using Nidavellir.Order;
 
-namespace EventArgs
+namespace Nidavellir.EventArgs
 {
     public class PackageOrderChangeEventArgs : System.EventArgs
     {

@@ -1,7 +1,6 @@
-using Interactable;
-using UnityEngine.PlayerLoop;
+using Nidavellir.Interactable;
 
-namespace EventArgs
+namespace Nidavellir.EventArgs
 {
     public class PackageDeliveryEventArgs : System.EventArgs
     {

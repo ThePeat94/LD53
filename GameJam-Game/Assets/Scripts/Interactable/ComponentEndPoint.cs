@@ -1,13 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using DefaultNamespace;
-using EventArgs;
-using Scriptables;
+using Nidavellir.EventArgs;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-namespace Interactable
+namespace Nidavellir.Interactable
 {
     public class ComponentEndPoint : MonoBehaviour, IInteractable
     {

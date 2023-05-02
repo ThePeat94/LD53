@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using DefaultNamespace.Order;
-using EventArgs;
-using TMPro;
+﻿using System.Collections.Generic;
+using Nidavellir.EventArgs;
+using Nidavellir.Order;
 using UnityEngine;
 
-namespace UI
+namespace Nidavellir.UI.Orders
 {
     public class CurrentOrdersUI : MonoBehaviour
     {

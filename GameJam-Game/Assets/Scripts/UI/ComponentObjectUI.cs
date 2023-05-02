@@ -1,9 +1,7 @@
-﻿using System;
-using DefaultNamespace;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace Nidavellir.UI
 {
     public class ComponentObjectUI : MonoBehaviour
     {

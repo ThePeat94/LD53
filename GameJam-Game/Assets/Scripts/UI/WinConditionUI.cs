@@ -1,9 +1,7 @@
-﻿using System;
-using DefaultNamespace;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
-namespace UI
+namespace Nidavellir.UI
 {
     public class WinConditionUI : MonoBehaviour
     {

@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace Scriptables
+namespace Nidavellir.Scriptables
 {
     [CreateAssetMenu(fileName = "Component Data", menuName = "Data/Component Data", order = 0)]
     public class ComponentData: ScriptableObject

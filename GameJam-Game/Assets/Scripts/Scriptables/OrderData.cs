@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Scriptables
+namespace Nidavellir.Scriptables
 {
     [CreateAssetMenu(fileName = "Order Data", menuName = "Data/Order Data", order = 0)]
     public class OrderData : ScriptableObject

@@ -1,8 +1,7 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Nidavellir
 {
     public class DestinationBandAnimator : MonoBehaviour
     {

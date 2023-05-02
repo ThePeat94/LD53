@@ -1,6 +1,6 @@
-﻿using Scriptables;
+﻿using Nidavellir.Scriptables;
 
-namespace DefaultNamespace.Order
+namespace Nidavellir.Order
 {
     public class PackageOrder
     {

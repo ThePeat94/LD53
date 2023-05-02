@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Scriptables.Audio;
+using Nidavellir.Scriptables.Audio;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;

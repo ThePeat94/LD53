@@ -1,13 +1,12 @@
-﻿using System;
-using Audio;
-using Input;
-using Scriptables.Audio;
-using UI;
+﻿using Nidavellir.Audio;
+using Nidavellir.Input;
+using Nidavellir.Scriptables.Audio;
+using Nidavellir.UI;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace DefaultNamespace
+namespace Nidavellir
 {
     public class GameStateManager : MonoBehaviour
     {

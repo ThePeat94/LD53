@@ -1,9 +1,9 @@
-using DefaultNamespace.Order;
-using EventArgs;
+using Nidavellir.EventArgs;
+using Nidavellir.Order;
 using TMPro;
 using UnityEngine;
 
-namespace UI
+namespace Nidavellir.UI
 {
     public class RoundTimer : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-﻿namespace EventArgs
+﻿namespace Nidavellir.EventArgs
 {
     public class ResourceValueChangedEventArgs : System.EventArgs
     {

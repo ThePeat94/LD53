@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Audio;
-using DefaultNamespace;
-using EventArgs;
-using JetBrains.Annotations;
-using Scriptables;
-using Scriptables.Audio;
-using Unity.VisualScripting;
+using Nidavellir.EventArgs;
+using Nidavellir.Scriptables;
 using UnityEngine;
 
-namespace Interactable
+namespace Nidavellir.Interactable
 {
     public class ComponentPackage: MonoBehaviour, IInteractable
     {

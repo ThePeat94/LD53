@@ -1,10 +1,9 @@
-﻿using System;
-using EventArgs;
-using Interactable;
+﻿using Nidavellir.EventArgs;
+using Nidavellir.Interactable;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace Nidavellir.UI
 {
     public class ComponentMachineUI : MonoBehaviour
     {

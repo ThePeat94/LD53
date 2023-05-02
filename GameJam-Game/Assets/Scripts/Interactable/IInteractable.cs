@@ -1,4 +1,4 @@
-﻿namespace Interactable
+﻿namespace Nidavellir.Interactable
 {
     public interface IInteractable
     {

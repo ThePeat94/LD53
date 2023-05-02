@@ -1,7 +1,7 @@
-﻿using Scriptables.Audio;
+﻿using Nidavellir.Scriptables.Audio;
 using UnityEngine;
 
-namespace Audio
+namespace Nidavellir.Audio
 {
     /// <summary>
     /// Use this class to randomly play a clip from a given SfxData list.

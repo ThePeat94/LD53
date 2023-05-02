@@ -1,9 +1,7 @@
-﻿using System;
-using Audio;
-using Scriptables.Audio;
+﻿using Nidavellir.UI.Orders;
 using UnityEngine;
 
-namespace UI
+namespace Nidavellir.UI
 {
     public class MainGameUI : MonoBehaviour
     {

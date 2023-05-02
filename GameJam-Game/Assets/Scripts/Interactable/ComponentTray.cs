@@ -1,11 +1,9 @@
-﻿using System;
-using Audio;
-using DefaultNamespace;
-using Scriptables.Audio;
+﻿using Nidavellir.Audio;
+using Nidavellir.Scriptables.Audio;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Interactable
+namespace Nidavellir.Interactable
 {
     public class ComponentTray : MonoBehaviour, IInteractable
     {

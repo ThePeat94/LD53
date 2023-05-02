@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scriptables
+namespace Nidavellir.Scriptables
 {
     [CreateAssetMenu(fileName = "Player Data", menuName = "Data/Player Data", order = 0)]
     public class PlayerData : ScriptableObject

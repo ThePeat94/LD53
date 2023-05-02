@@ -1,12 +1,10 @@
-﻿using System;
-using System.Linq;
-using DefaultNamespace;
-using Input;
-using Interactable;
+﻿using System.Linq;
+using Nidavellir.Input;
+using Nidavellir.Interactable;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Player
+namespace Nidavellir.Player
 {
     public class PlayerInteractionController : MonoBehaviour
     {
