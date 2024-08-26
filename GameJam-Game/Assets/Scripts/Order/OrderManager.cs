@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Nidavellir.Audio;
@@ -134,6 +135,8 @@ namespace Nidavellir.Order
                 {
                     continue;
                 }
+                
+                var queuedNeededComponents = new Queue(order.OrderData.NeededComponents.ToList());
 
                 foreach (var contained in deliveredPackage.ContainedComponents)
                 {

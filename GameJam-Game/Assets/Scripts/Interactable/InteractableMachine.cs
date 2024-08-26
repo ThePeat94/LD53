@@ -86,6 +86,12 @@ namespace Nidavellir.Interactable
                     Debug.Log("Invalid component object");
                     return interactable;
                 }
+
+                if (this.m_currentComponentData != null)
+                {
+                    Debug.Log("Already has component object.");
+                    return interactable;
+                }
                 
                 Debug.Log("Inserting Component object");
                 this.m_currentComponentData = co.ComponentData;
