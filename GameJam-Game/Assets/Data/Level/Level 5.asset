@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb41f3b225364249b65cb32c3babf662, type: 3}
   m_Name: Level 5
   m_EditorClassIdentifier: 
+  m_name: How to get rich - 101
+  m_sceneName: Level 5
   m_initialFrameTime: 7000
   m_availableOrders:
   - {fileID: 11400000, guid: 8c6d78f4957727c46acd4873229f6df0, type: 2}

@@ -1,11 +1,15 @@
 ﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Nidavellir.Scriptables
 {
     [CreateAssetMenu(fileName = "Level Data", menuName = "Data/Level Data", order = 0)]
     public class LevelData : ScriptableObject
     {
+        [SerializeField] private string m_name;
+        [SerializeField] private string m_sceneName;
         [SerializeField] private int m_initialFrameTime;
         [SerializeField] private List<OrderData> m_availableOrders;
         [SerializeField] private int m_neededOrdersToFulfill;
@@ -15,6 +19,8 @@ namespace Nidavellir.Scriptables
         [SerializeField] private OrderData m_safeOrderData;
 
 
+        public string Name => this.m_name;
+        public string SceneName => this.m_sceneName;
         public int InitialFrameTime => this.m_initialFrameTime;
         public IReadOnlyList<OrderData> AvailableOrders => this.m_availableOrders;
         public int NeededOrdersToFulfill => this.m_neededOrdersToFulfill;

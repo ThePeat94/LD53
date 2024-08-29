@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb41f3b225364249b65cb32c3babf662, type: 3}
   m_Name: Level 4
   m_EditorClassIdentifier: 
+  m_name: Wow, expensive education!
+  m_sceneName: Level 4
   m_initialFrameTime: 6000
   m_availableOrders:
   - {fileID: 11400000, guid: 7df97415365a5e74ea1f97fec453a9eb, type: 2}

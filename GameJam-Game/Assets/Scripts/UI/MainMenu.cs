@@ -8,6 +8,7 @@ namespace Nidavellir.UI
     {
         [SerializeField] private GameObject m_startMenu;
         [SerializeField] private GameObject m_credits;
+        [SerializeField] private GameObject m_levelSelection;
         [SerializeField] private Slider m_musicVolumeSlider;
         [SerializeField] private Slider m_sfxVolumeSlider;
         [SerializeField] private GameObject m_optionsPanel;
@@ -35,6 +36,12 @@ namespace Nidavellir.UI
         {
             this.m_optionsPanel.SetActive(false);
             this.m_startMenu.SetActive(true);
+        }
+        
+        public void BackToStartFromLevelSelection()
+        {
+            this.m_startMenu.SetActive(true);
+            this.m_levelSelection.SetActive(false);
         }
 
         public void MusicVolumeSliderChanged(float volume)
@@ -67,6 +74,12 @@ namespace Nidavellir.UI
         {
             this.m_optionsPanel.SetActive(true);
             this.m_startMenu.SetActive(false);
+        }
+        
+        public void ShowLevelSelection()
+        {
+            this.m_startMenu.SetActive(false);
+            this.m_levelSelection.SetActive(true);
         }
 
         public void StartGame()
