@@ -13,11 +13,8 @@ namespace Nidavellir.Interactable
     /// </summary>
     public class InteractableMachine : MonoBehaviour, IInteractable
     {
-        [SerializeField] private ComponentData m_needsComponent;
+        [SerializeField] private InteractableMachineData m_machineData;
         [SerializeField] private Transform m_componentPackagePlace;
-        [SerializeField] private SfxData m_usageSfxData;
-        [SerializeField] private SfxData m_noComponentPackageSfxData;
-        [SerializeField] private SfxData m_noComponentObjectSfxData;
         [SerializeField] private SfxPlayer m_sfxPlayer;
 
         private EventHandler<ComponentAddedEventArgs> m_componentAdded;
@@ -60,14 +57,14 @@ namespace Nidavellir.Interactable
             if (this.m_currentComponentData is null)
             {
                 Debug.Log("Empty machine, nothing to do.");
-                this.m_sfxPlayer.PlayOneShot(this.m_noComponentObjectSfxData);
+                this.m_sfxPlayer.PlayOneShot(this.m_machineData.NoComponentObjectSfxData);
                 return null;
             }
 
             if (this.m_currentComponentPackage is null)
             {
                 Debug.Log("No component package");
-                this.m_sfxPlayer.PlayOneShot(this.m_noComponentPackageSfxData);
+                this.m_sfxPlayer.PlayOneShot(this.m_machineData.NoComponentPackageSfxData);
                 return null;
             }
             
@@ -76,7 +73,7 @@ namespace Nidavellir.Interactable
             var consumed = this.m_currentComponentData;
             this.m_currentComponentData = null;
             this.m_componentConsumed?.Invoke(this, new(consumed));
-            this.m_sfxPlayer.PlayOneShot(this.m_usageSfxData);
+            this.m_sfxPlayer.PlayOneShot(this.m_machineData.UsageSfxData);
             return null;
         }
 
@@ -84,7 +81,7 @@ namespace Nidavellir.Interactable
         {
             if (interactable is ComponentObject co)
             {
-                if (co.ComponentData != this.m_needsComponent)
+                if (co.ComponentData != this.m_machineData.NeededComponent)
                 {
                     Debug.Log("Invalid component object");
                     return interactable;

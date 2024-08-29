@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e2ae3af57c466199262158e7eb4cca, type: 3}
+  m_Name: Package Band Machine Data
+  m_EditorClassIdentifier: 
+  m_neededComponent: {fileID: 11400000, guid: 10335a9c89e980645878bcacf054cb4a, type: 2}
+  m_usageSfxData: {fileID: 11400000, guid: baa3a0b577a9ad44ea8b77c414eb2139, type: 2}
+  m_noComponentPackageSfxData: {fileID: 11400000, guid: c3eb517496eccff4083d184d82ac8719, type: 2}
+  m_noComponentObjectSfxData: {fileID: 11400000, guid: 3ef505113bfc5ea4096f874e6284a1ff, type: 2}

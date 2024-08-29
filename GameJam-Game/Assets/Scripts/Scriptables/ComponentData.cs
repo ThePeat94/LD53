@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Nidavellir.Scriptables
 {
-    [CreateAssetMenu(fileName = "Component Data", menuName = "Data/Component Data", order = 0)]
+    [CreateAssetMenu(fileName = "Component Data", menuName = "Data/Component", order = 0)]
     public class ComponentData: ScriptableObject
     {
         [SerializeField] private string m_componentName = "NoName";

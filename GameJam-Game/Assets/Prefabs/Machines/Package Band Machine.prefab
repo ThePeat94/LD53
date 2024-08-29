@@ -411,11 +411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1df9e7528446e79d65ea57d6866684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_needsComponent: {fileID: 11400000, guid: 10335a9c89e980645878bcacf054cb4a, type: 2}
+  m_machineData: {fileID: 11400000, guid: 7d37594063e3047a084ccec4995be455, type: 2}
   m_componentPackagePlace: {fileID: 7092518951043430635}
-  m_usageSfxData: {fileID: 11400000, guid: baa3a0b577a9ad44ea8b77c414eb2139, type: 2}
-  m_noComponentPackageSfxData: {fileID: 11400000, guid: c3eb517496eccff4083d184d82ac8719, type: 2}
-  m_noComponentObjectSfxData: {fileID: 11400000, guid: 3ef505113bfc5ea4096f874e6284a1ff, type: 2}
   m_sfxPlayer: {fileID: 0}
 --- !u!1001 &4743665587965538781
 PrefabInstance:

@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1df9e7528446e79d65ea57d6866684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_machineData: {fileID: 11400000, guid: 099c3c173b2b44ee5ac78edd54dec757, type: 2}
   m_needsComponent: {fileID: 11400000, guid: c5fea7c981e244942b50bba3a5b68300, type: 2}
   m_componentPackagePlace: {fileID: 1174199904285731330}
   m_usageSfxData: {fileID: 11400000, guid: c5af50464cbffb340b01a39ff819094f, type: 2}
