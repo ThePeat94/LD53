@@ -1,8 +1,9 @@
 ﻿namespace Nidavellir.Interactable
 {
-    /**
-     * Used for objects which can be interacted with
-     */
+
+    /// <summary>
+    /// Used to enable objects to be interacted with
+    /// </summary>
     public interface IInteractable
     {
         /// <summary>
