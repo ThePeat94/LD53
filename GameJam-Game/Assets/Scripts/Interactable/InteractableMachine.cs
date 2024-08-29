@@ -103,7 +103,7 @@ namespace Nidavellir.Interactable
                 return null;
             }
             
-            if (interactable is ComponentPackage cp)
+            if (interactable is ComponentPackage cp && this.m_currentComponentPackage is null)
             {
                 Debug.Log("Inserting Component package");
                 this.m_currentComponentPackage = cp;
