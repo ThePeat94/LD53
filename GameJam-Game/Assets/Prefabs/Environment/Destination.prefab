@@ -186,4 +186,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a0fc05098648ae9d0fea4ba956f196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bandMaterial: {fileID: 2100000, guid: 27f77660df0a5fa48b47591aedd1fb1f, type: 2}
+  m_bandSpeed: 10
