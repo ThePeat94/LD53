@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace Nidavellir.Interactable
 {
+    /// <summary>
+    /// An end point for other components, which can receive packages and components
+    /// Used to fulfill orders
+    /// </summary>
     public class ComponentEndPoint : MonoBehaviour, IInteractable
     {
         private EventHandler<PackageDeliveryEventArgs> m_packageDelivered;
@@ -16,7 +20,6 @@ namespace Nidavellir.Interactable
 
         public IInteractable Interact(InteractingEntity interactingEntity)
         {
-            Debug.Log("Can not use");
             return interactingEntity.ComponentHolder.childCount == 1 ? interactingEntity.ComponentHolder.GetChild(0).GetComponent<IInteractable>() : null;
         }
 

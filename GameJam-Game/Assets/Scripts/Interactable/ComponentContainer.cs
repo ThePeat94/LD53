@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace Nidavellir.Interactable
 {
+    /// <summary>
+    /// A container, which can be used to generate other components (e. g. a table which generates paper)
+    /// </summary>
     public class ComponentContainer : MonoBehaviour, IInteractable
     {
         [SerializeField] private ComponentData m_containedComponent;
@@ -13,7 +16,6 @@ namespace Nidavellir.Interactable
         [SerializeField] private SfxData m_takeSfxData;
         [SerializeField] private SfxPlayer m_sfxPlayer;
         
-
         private void Awake()
         {
             if (this.m_collider is null)
@@ -35,6 +37,12 @@ namespace Nidavellir.Interactable
 
         public bool CanInteractUsingInteractable(IInteractable interactable)
         {
+            Debug.Log("lol");
+            if (interactable is ComponentObject co)
+            {
+                Debug.Log(co.ComponentData.ComponentName);
+                Debug.Log(co.ComponentData == this.m_containedComponent);
+            }
             return false;
         }
 

@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace Nidavellir.Interactable
 {
+    /// <summary>
+    /// An object to combine a component object with a component package
+    /// </summary>
     public class InteractableMachine : MonoBehaviour, IInteractable
     {
         [SerializeField] private ComponentData m_needsComponent;

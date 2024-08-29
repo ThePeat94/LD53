@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Nidavellir.Interactable
 {
+    /// <summary>
+    /// An object which can be used to temporarily store components or to be used as an intermediary for combining components
+    /// </summary>
     public class ComponentTray : MonoBehaviour, IInteractable
     {
         [SerializeField] private Transform m_componentHolderParent;

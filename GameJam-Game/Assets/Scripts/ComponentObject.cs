@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace Nidavellir
 {
+    /// <summary>
+    /// Describes a singular component object in the game. E. G. a piece of Paper or a Book, something that can be put
+    /// into a <see cref="ComponentPackage"/>
+    /// </summary>
     public class ComponentObject : MonoBehaviour, IInteractable
     {
         [SerializeField] private ComponentData m_componentData;

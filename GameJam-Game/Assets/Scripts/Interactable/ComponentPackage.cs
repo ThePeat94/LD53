@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace Nidavellir.Interactable
 {
+    /// <summary>
+    /// A component which can hold multiple other component objects. E. G. a carton or a envelope
+    /// </summary>
     public class ComponentPackage: MonoBehaviour, IInteractable
     {
         [SerializeField] private Collider m_collider;
