@@ -32,18 +32,20 @@ namespace Nidavellir.Interactable
 
         public IInteractable InteractUsingInteractable(InteractingEntity interactingEntity, IInteractable interactable)
         {
+            if (interactable is ComponentPackage || interactable is ComponentObject)
+            {
+                Destroy(interactingEntity.ComponentHolder.GetChild(0).gameObject);
+                return null;
+            }
             return interactable;
         }
 
         public bool CanInteractUsingInteractable(IInteractable interactable)
         {
-            Debug.Log("lol");
-            if (interactable is ComponentObject co)
-            {
-                Debug.Log(co.ComponentData.ComponentName);
-                Debug.Log(co.ComponentData == this.m_containedComponent);
-            }
-            return false;
+            return (interactable is ComponentPackage componentPackage &&
+                    componentPackage.ComponentData == this.m_containedComponent) ||
+                   (interactable is ComponentObject co &&
+                    co.ComponentData == this.m_containedComponent);
         }
 
         public void Activate()

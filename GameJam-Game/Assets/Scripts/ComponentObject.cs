@@ -14,8 +14,7 @@ namespace Nidavellir
         [SerializeField] private Collider m_collider;
 
         public ComponentData ComponentData => this.m_componentData;
-
-
+        
         private void Awake()
         {
             if (this.m_collider is null)
