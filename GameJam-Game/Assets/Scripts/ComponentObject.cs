@@ -35,15 +35,5 @@ namespace Nidavellir
         {
             throw new System.NotImplementedException();
         }
-
-        public void Activate()
-        {
-            this.m_collider.enabled = true;
-        }
-
-        public void Deactivate()
-        {
-            this.m_collider.enabled = false;
-        }
     }
 }

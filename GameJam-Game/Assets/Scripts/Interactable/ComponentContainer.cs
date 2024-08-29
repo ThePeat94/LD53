@@ -47,15 +47,5 @@ namespace Nidavellir.Interactable
                    (interactable is ComponentObject co &&
                     co.ComponentData == this.m_containedComponent);
         }
-
-        public void Activate()
-        {
-            this.m_collider.enabled = true;
-        }
-
-        public void Deactivate()
-        {
-            this.m_collider.enabled = false;
-        }
     }
 }

@@ -16,8 +16,7 @@ namespace Nidavellir.Interactable
 
         private EventHandler<ComponentAddedEventArgs> m_componentAdded;
         
-        private List<ComponentData> m_componentDatas = new();
-
+        private readonly List<ComponentData> m_containedComponents = new();
         
         public event EventHandler<ComponentAddedEventArgs> ComponentAdded
         {
@@ -25,7 +24,7 @@ namespace Nidavellir.Interactable
             remove => this.m_componentAdded -= value;
         }
 
-        public IReadOnlyList<ComponentData> ContainedComponents => this.m_componentDatas;
+        public IReadOnlyList<ComponentData> ContainedComponents => this.m_containedComponents;
         public ComponentData ComponentData => this.initialData;
 
 
@@ -42,7 +41,7 @@ namespace Nidavellir.Interactable
 
         public void AddComponent(ComponentData data)
         {
-            this.m_componentDatas.Add(data);
+            this.m_containedComponents.Add(data);
             this.m_componentAdded?.Invoke(this, new(data));
         }
 
@@ -64,13 +63,6 @@ namespace Nidavellir.Interactable
         public bool CanInteractUsingInteractable(IInteractable interactable)
         {
             return interactable is ComponentObject;
-        }
-
-        public void Activate()
-        {
-            if (this.m_collider == null)
-                return;
-            this.m_collider.enabled = true;
         }
 
         public void Deactivate()

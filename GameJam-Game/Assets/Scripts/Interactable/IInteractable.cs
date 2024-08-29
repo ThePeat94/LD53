@@ -27,15 +27,5 @@
         /// <param name="interactable">The other interactable which should be checked against</param>
         /// <returns>true, if interaction is possible, false if not</returns>
         public bool CanInteractUsingInteractable(IInteractable interactable);
-        
-        /// <summary>
-        /// Activates the interactable
-        /// </summary>
-        public void Activate();
-        
-        /// <summary>
-        /// Deactivates the interactable
-        /// </summary>
-        public void Deactivate();
     }
 }

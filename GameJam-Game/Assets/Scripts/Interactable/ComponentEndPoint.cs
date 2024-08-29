@@ -44,9 +44,5 @@ namespace Nidavellir.Interactable
         {
             return interactable is ComponentPackage || interactable is ComponentObject;
         }
-
-        public void Activate() { }
-
-        public void Deactivate() { }
     }
 }

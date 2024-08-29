@@ -83,14 +83,6 @@ namespace Nidavellir.Interactable
             return interactable is ComponentPackage or ComponentObject;
         }
 
-        public void Activate()
-        {
-        }
-
-        public void Deactivate()
-        {
-        }
-
         private IInteractable TryDepositInteractable(IInteractable interactable)
         {
             var go = interactable switch
