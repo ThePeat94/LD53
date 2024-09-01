@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using UnityEditor;
+using Nidavellir.LevelRating;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Nidavellir.Scriptables
 {
@@ -17,7 +16,7 @@ namespace Nidavellir.Scriptables
         [SerializeField] private int m_maxFramesForOrderSpawn;
         [SerializeField] private int m_firstOrderAfterFrames;
         [SerializeField] private OrderData m_safeOrderData;
-
+        [SerializeField] private LevelRatingThresholds m_levelRatingThresholds;
 
         public string Name => this.m_name;
         public string SceneName => this.m_sceneName;
@@ -28,5 +27,6 @@ namespace Nidavellir.Scriptables
         public int MaxFramesForOrderSpawn => this.m_maxFramesForOrderSpawn;
         public int FirstOrderAfterFrames => this.m_firstOrderAfterFrames;
         public OrderData SafeOrderData => this.m_safeOrderData;
+        public LevelRatingThresholds LevelRatingThresholds => this.m_levelRatingThresholds;
     }
 }
