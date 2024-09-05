@@ -1,5 +1,7 @@
 ﻿using Nidavellir.Audio;
 using Nidavellir.Input;
+using Nidavellir.LevelRating;
+using Nidavellir.Scriptables;
 using Nidavellir.Scriptables.Audio;
 using Nidavellir.UI;
 using Unity.VisualScripting;
@@ -8,6 +10,9 @@ using UnityEngine.SceneManagement;
 
 namespace Nidavellir
 {
+    /// <summary>
+    /// Used to manage the current state of the game. Captures game loss/win conditions and retrieves the rating for a level.
+    /// </summary>
     public class GameStateManager : MonoBehaviour
     {
         [SerializeField] private bool m_hasNewInstructions = true;
@@ -17,8 +22,11 @@ namespace Nidavellir
         [SerializeField] private SfxData m_gameWonVoiceSfxData;
         [SerializeField] private SfxData m_gameLostSfxData;
         [SerializeField] private SfxData m_gameLostVoiceSfxData;
+        [SerializeField] private LevelData m_currentLevelData;
+        [SerializeField] private LevelRatingRecorder m_levelRatingRecorder;
+        [SerializeField] private LevelRatingUI m_levelRatingUI;
         
-
+        
         private State m_currentState;
 
         private InputProcessor m_inputProcessor;
@@ -30,6 +38,11 @@ namespace Nidavellir
         
         private void Awake()
         {
+            if (this.m_levelRatingRecorder is null)
+            {
+                this.m_levelRatingRecorder = FindObjectOfType<LevelRatingRecorder>();
+            }
+            
             this.m_inputProcessor = this.GetOrAddComponent<InputProcessor>();
             this.m_gameWinner = FindObjectOfType<GameWinner>();
             this.m_mainGameUI = FindObjectOfType<MainGameUI>();
@@ -64,6 +77,13 @@ namespace Nidavellir
         {
             this.m_currentState = State.Won;
             this.m_mainGameUI.ShowGameWonPanel();
+            this.m_levelRatingUI.ShowLevelRatings(
+                this.m_levelRatingRecorder.LevelRatingMetrics,
+                LevelRatingCalculator.CalculateLevelRating(
+                    this.m_levelRatingRecorder.LevelRatingMetrics, 
+                    this.m_currentLevelData.LevelRatingThresholds
+                )
+            );
             this.m_sfxPlayer.PlayOneShot(this.m_gameWonSfxData);
             this.m_sfxPlayer.PlayOneShot(this.m_gameWonVoiceSfxData);
         }
