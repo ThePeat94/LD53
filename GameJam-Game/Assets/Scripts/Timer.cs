@@ -6,8 +6,8 @@ using UnityEngine;
 
 namespace Nidavellir
 {
-    public class Timer : MonoBehaviour{
-    
+    public class Timer : MonoBehaviour 
+    {
         [SerializeField] private LevelData m_levelData;
 
         private int m_initialFrameTime;
