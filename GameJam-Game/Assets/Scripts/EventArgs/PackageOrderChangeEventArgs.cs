@@ -8,7 +8,15 @@ namespace Nidavellir.EventArgs
         {
             this.PackageOrder = packageOrder;
         }
-        
+
+        public PackageOrderChangeEventArgs(PackageOrder packageOrder, bool isFirstOrder)
+        {
+            this.PackageOrder = packageOrder;
+            this.IsFirstOrder = isFirstOrder;
+        }
+
         public PackageOrder PackageOrder { get; }
+        
+        public bool IsFirstOrder { get; }
     }
 }
