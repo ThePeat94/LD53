@@ -30,11 +30,11 @@ Transform:
   m_Children:
   - {fileID: 1062109757397022962}
   - {fileID: 4743790417930826706}
-  - {fileID: 982186770355284247}
   - {fileID: 306707364868342173}
+  - {fileID: 982186770355284247}
   - {fileID: 4310648698649318515}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2975490453948639318
 PrefabInstance:
