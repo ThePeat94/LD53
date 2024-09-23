@@ -7,13 +7,12 @@ namespace Nidavellir.UI
 {
     public class RoundTimer : MonoBehaviour
     {
-
-        private Timer m_timer;
-    
-
         [SerializeField] private TextMeshProUGUI m_mainTextField;
         [SerializeField] private TextMeshProUGUI changeVisualiseField;
         [SerializeField] private int changeFrameCount = 60;
+        
+        private Timer m_timer;
+        
         public Color32 normalFillColor;
         public Color32 warningFillColor;
         public float warningLimit = 20;

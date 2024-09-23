@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f836261ca03940318f521aa25931542c, type: 3}
-  m_Name: Safe Stamoed Book Order
+  m_Name: Free Book Order
   m_EditorClassIdentifier: 
-  m_name: Safe Stamped Book Order
-  m_icon: {fileID: 21300000, guid: f022db88d46eb0141b9234ce543f2599, type: 3}
+  m_name: Free Book
+  m_icon: {fileID: 21300000, guid: 892062532a05b704abc28060c99df0b5, type: 3}
   m_neededComponents:
   - {fileID: 11400000, guid: 0fadfe7fb63940242a6feb1987cd9aa8, type: 2}
   - {fileID: 11400000, guid: e43bb98462f26b34ebf827b5c34121fa, type: 2}
-  - {fileID: 11400000, guid: c5fea7c981e244942b50bba3a5b68300, type: 2}
-  - {fileID: 11400000, guid: 10335a9c89e980645878bcacf054cb4a, type: 2}
   m_frameTime: 3000
-  m_punishFrames: 600
-  m_rewardFrames: 400
+  m_punishFrames: 150
+  m_rewardFrames: 100

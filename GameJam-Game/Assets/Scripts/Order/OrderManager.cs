@@ -18,6 +18,7 @@ namespace Nidavellir.Order
         private EventHandler<PackageOrderChangeEventArgs> m_orderSpawned;
         private EventHandler<PackageOrderChangeEventArgs> m_orderExpired;
         private EventHandler<PackageOrderChangeEventArgs> m_orderDelivered;
+        private EventHandler<PackageOrderChangeEventArgs> m_unneededOrderDelivered;
 
         [SerializeField] private LevelData m_levelData;
         [SerializeField] private GameStateManager m_gameStateManager;
@@ -53,6 +54,12 @@ namespace Nidavellir.Order
         {
             add => this.m_orderDelivered += value;
             remove => this.m_orderDelivered -= value;
+        }
+
+        public event EventHandler<PackageOrderChangeEventArgs> UnneededOrderDelivered
+        {
+            add => this.m_unneededOrderDelivered += value;
+            remove => this.m_unneededOrderDelivered -= value;
         }
 
         public IReadOnlyCollection<PackageOrder> CurrentOrders => this.m_currentOrders;
@@ -136,8 +143,6 @@ namespace Nidavellir.Order
                     continue;
                 }
                 
-                var queuedNeededComponents = new Queue(order.OrderData.NeededComponents.ToList());
-
                 foreach (var contained in deliveredPackage.ContainedComponents)
                 {
                     if (!order.OrderData.NeededComponents.Contains(contained))
@@ -157,6 +162,7 @@ namespace Nidavellir.Order
             if (orderWithAll is null)
             {
                 Debug.Log("Order not fullfilled");
+                this.m_unneededOrderDelivered?.Invoke(this, new (null));
                 this.m_sfxPlayer.PlayOneShot(this.m_notFittingOrderSfxData);
                 return;
             }
@@ -165,7 +171,7 @@ namespace Nidavellir.Order
             listedOrders.RemoveAt(index);
             this.m_currentOrders = new Queue<PackageOrder>(listedOrders);
             this.m_sfxPlayer.PlayOneShot(this.m_orderDeliveredSfxData);
-            this.m_orderDelivered?.Invoke(this, new PackageOrderChangeEventArgs(orderWithAll));
+            this.m_orderDelivered?.Invoke(this, new PackageOrderChangeEventArgs(orderWithAll, index == 0));
 
             if (this.m_currentOrders.Count == 0)
                 this.m_currentOrderSpawnFrameCountdown = Math.Min(this.m_currentOrderSpawnFrameCountdown, 10);

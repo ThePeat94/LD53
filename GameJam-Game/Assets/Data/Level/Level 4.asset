@@ -24,3 +24,7 @@ MonoBehaviour:
   m_maxFramesForOrderSpawn: 750
   m_firstOrderAfterFrames: 200
   m_safeOrderData: {fileID: 11400000, guid: b1529e902ad08254287340109f4aa50a, type: 2}
+  m_levelRatingThresholds:
+    m_oneStarRatingMinimum: 500
+    m_twoStarRatingMinimum: 600
+    m_threeStarRatingMinimum: 850
