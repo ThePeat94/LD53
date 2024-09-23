@@ -1,5 +1,8 @@
 ﻿namespace Nidavellir.LevelRating
 {
+    /// <summary>
+    /// Contains the calculated results about a level to be evaluated in further operations (e. g. Level Rating)
+    /// </summary>
     public class LevelRatingCalculationResult
     {
         public float FailedOrdersSum { get; set; }

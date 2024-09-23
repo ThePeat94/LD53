@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace Nidavellir.LevelRating
 {
+    /// <summary>
+    /// Records diverse metrics during the game
+    /// </summary>
     public class LevelRatingRecorder : MonoBehaviour
     {
         [SerializeField] private LevelData m_currentLevel;

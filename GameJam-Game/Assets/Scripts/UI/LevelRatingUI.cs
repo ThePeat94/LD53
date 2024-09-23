@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Nidavellir.UI
 {
+    /// <summary>
+    /// The UI to display the rating of a level. It displays the whole rating and each individual score for each metric.
+    /// </summary>
     public class LevelRatingUI : MonoBehaviour
     {
         [SerializeField] private GameObject m_failedRatingPanel;

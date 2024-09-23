@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Nidavellir.LevelRating
 {
+    /// <summary>
+    /// Calculates the rating of a level using metrics and thresholds
+    /// </summary>
     public class LevelRatingCalculator
     {
         public const float POINT_PER_LEFT_FRAME = 0.5f;
